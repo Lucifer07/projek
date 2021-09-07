@@ -35,7 +35,7 @@ if (empty($_SESSION['username'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="refresh" content="250;url=index.php" />
+    <meta http-equiv="refresh" content="300;url=index.php" />
     <title>PJU Remote Access</title>
     <!-- Bootstrap core CSS , Javascript -->
     <link rel="shortcut icon" href="dist/img/Jasamarga_Bali.ico" type="image/x-icon">
@@ -162,15 +162,17 @@ if (empty($_SESSION['username'])) {
             tanggallengkap = namahari[hari] + ", " +tanggal + " " + namabulan[bulan] + " " + tahun;
             </script>
             <div class="container bg-white ">
-                <div class="jumbotron bg-primary text-white ">
-                    <h1 class="display-10">PT. JASAMARGA BALI TOL <b ></b></h1>
-                    <p > Role : <b><?= $_SESSION['username'] ?></b> </p>
-                    <p class="lead">Remote access lampu Penerangan Jalan Umum TOL Bali Mandara</p>
+                <div class="jumbotron jumbotron-fluid text-center bg-primary text-white ">
+                    <h1 class="display-30">PT. JASAMARGA BALI TOL </h1>
+                    <input type="hidden" name="username" value="<?= $_SESSION['username'] ?>">
+                    <p class="">Remote access Lampu Penerangan Jalan Umum TOL Bali Mandara</p>
                     <script language='JavaScript'>document.write(tanggallengkap);</script>
-                    <hr class="my-2 bg-light">
-                    <a class="btn btn-danger btn-md  " href="../panel1/" role="button">Monitoring Dashboard</a>
+                    <hr class="my-10 bg-light">
+                  
+                    <a class="btn btn-danger btn-md  " href="../logout.php" role="button">Keluar</a>
+                    <a class="btn btn-warning btn-md" href="index.php" name="go" >Refresh</a>
+                    <a class="btn btn-success btn-md  " href="../panel1/" role="button">Monitoring Panel</a>
                     <!-- <a class="btn btn-success btn-md " href="gantipass.php" role="button">Ganti Password</a> -->
-                    <a class="btn btn-warning btn-md" href="home_admin.php" name="go" >Refresh</a>
                 </div>   
                 <div class="table-responsive bg-white">  
                     <table class="table table-hover table-primary ">
@@ -244,8 +246,8 @@ if (empty($_SESSION['username'])) {
                             $DataRb     =[$Button_Rb,$Button_Rb2,$Button_Rb3,$Button_Rb4,$Button_Rb5,$Button_Rb6,$Button_Rb7,$Button_Rb8,$Button_Rb9,$Button_Rb10];
                             $DataRbss   =[$Button_Rbs,$Button_Rbs2,$Button_Rbs3,$Button_Rbs4,$Button_Rbs5,$Button_Rbs6,$Button_Rbs7,$Button_Rbs8,$Button_Rbs9,$Button_Rbs10,];
                             $DataRbt    =[$Button_Rbt,$Button_Rbt2,$Button_Rbt3,$Button_Rbt4,$Button_Rbt5,$Button_Rbt6,$Button_Rbt7,$Button_Rbt8,$Button_Rbt9,$Button_Rbt10];
-                            $Dataip     =['192.168.0.101','192.168.0.102','192.168.0.103','192.168.0.104','192.168.0.105','192.168.0.106','192.168.0.108','192.168.0.109','192.168.0.110','192.168.0.111'];
-                            $DataLokasi =['0N+100','1N+100','5+760','7+400','OFF RAMP BENOA','PANEL KECIL AKSES BENOA','U-TURN AKSES BENOA','4+700','2+260','0+360'];
+                            $Dataip     =['192.168.1.12','192.168.1.14','192.168.1.16','192.168.1.18','192.168.1.19','192.168.1.21','192.168.1.22','192.168.1.25','192.168.1.27','192.168.1.29'];
+                            $DataLokasi =['0+360','2+260','4+700','5+760','7+400','OFF RAMP BENOA','AKSES BENOA','U-TURN AKSES BENOA','1N+100','0N+100'];
                             $count=0;
                                 for($i=0;$i<=count($DataRa)-1;$i++){
                                     $count+=1;

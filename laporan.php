@@ -5,14 +5,14 @@
             <section class="col-md-12">
               <div class="card">
                 <div  class="card-header">
-                  <h3 id=laporan class="card-title">Panel 1</h3>
+                  <h3 id=laporan class="card-title"></h3>
                   <div class="card-tools">
                   <button type="button" class="btn btn-tool" data-card-widget="collapse">
                     <i class="fas fa-minus"></i>
                   </button>
-                  <button type="button" class="btn btn-tool" data-card-widget="remove">
+                  <!-- <button type="button" class="btn btn-tool" data-card-widget="remove">
                     <i class="fas fa-times"></i>
-                  </button>
+                  </button> -->
                 </div>
                 </div>
                 <div class="card-body">
@@ -40,9 +40,9 @@
                   <button type="button" class="btn btn-tool" data-card-widget="collapse">
                     <i class="fas fa-minus"></i>
                   </button>
-                  <button type="button" class="btn btn-tool" data-card-widget="remove">
+                  <!-- <button type="button" class="btn btn-tool" data-card-widget="remove">
                     <i class="fas fa-times"></i>
-                  </button>
+                  </button> -->
                 </div>
               </div>
         

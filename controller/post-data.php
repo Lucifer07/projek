@@ -1,5 +1,4 @@
 <?php
-include 'esp-database.php';
 include 'testinput.php';
  $servername = "localhost";
 

@@ -4,7 +4,6 @@ if (empty($_SESSION['username'])) {
     echo "<script>alert('Maaf, untuk mengakses halaman ini, anda harus login terlebih dahulu, terima kasih');document.location='../index.php'</script>";
     
 }
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -17,10 +16,10 @@ if (empty($_SESSION['username'])) {
 </body>
 <Script> 
 document.getElementById("panel").className = "nav-link active"; 
-document.getElementById("panel2").className = "nav-link active";
-document.getElementById("panid").text="PANEL 1N+100";
-document.getElementById("laporandaya").innerHTML = "<strong>PANEL 1N+100</strong>";
-document.getElementById("laporan").innerHTML = "PANEL 1N+100";
+document.getElementById("panel8").className = "nav-link active";
+document.getElementById("panid").text=" PANEL 2+260";
+document.getElementById("laporandaya").innerHTML = "<strong> PANEL 2+260</strong>";
+document.getElementById("laporan").innerHTML = "PANEL 2+260";
 var energiR = [],energis = [], volts = [], voltr = [], voltt = [], energit = [],dayatotal=[],energitotal=[]; 
     var gaugeOptions = {
       chart: {
@@ -309,14 +308,14 @@ var energiR = [],energis = [], volts = [], voltr = [], voltt = [], energit = [],
         }
       }]
     };
-energiR["Panel2"] = Highcharts.chart("container-kr", Highcharts.merge(gaugeOptions, configEnergiR));
-energis["Panel2"] = Highcharts.chart("container-ks", Highcharts.merge(gaugeOptions, configEnergiS));
-energit["Panel2"] = Highcharts.chart("container-kt", Highcharts.merge(gaugeOptions, configEnergiT));
-energitotal["Panel2"] = Highcharts.chart("container-ktot", Highcharts.merge(gaugeOptions, configEnergiTotal));
-volts["Panel2"] = Highcharts.chart("container-vs", Highcharts.merge(gaugeOptions, configVoltageS));
-voltr["Panel2"] = Highcharts.chart("container-vr", Highcharts.merge(gaugeOptions, configvoltr));
-voltt["Panel2"] = Highcharts.chart("container-vt", Highcharts.merge(gaugeOptions, configVoltageT));
-dayatotal["Panel2"] = Highcharts.chart("container-ptot", Highcharts.merge(gaugeOptions, configDayaTotal));
+energiR["Panel8"] = Highcharts.chart("container-kr", Highcharts.merge(gaugeOptions, configEnergiR));
+energis["Panel8"] = Highcharts.chart("container-ks", Highcharts.merge(gaugeOptions, configEnergiS));
+energit["Panel8"] = Highcharts.chart("container-kt", Highcharts.merge(gaugeOptions, configEnergiT));
+energitotal["Panel8"] = Highcharts.chart("container-ktot", Highcharts.merge(gaugeOptions, configEnergiTotal));
+volts["Panel8"] = Highcharts.chart("container-vs", Highcharts.merge(gaugeOptions, configVoltageS));
+voltr["Panel8"] = Highcharts.chart("container-vr", Highcharts.merge(gaugeOptions, configvoltr));
+voltt["Panel8"] = Highcharts.chart("container-vt", Highcharts.merge(gaugeOptions, configVoltageT));
+dayatotal["Panel8"] = Highcharts.chart("container-ptot", Highcharts.merge(gaugeOptions, configDayaTotal));
 const data= 'fun.php';
 $(document).ready(function() {
     selesai();
@@ -331,14 +330,14 @@ function selesai() {
 async function getdata(){
     const datbar = await fetch(data);
     const jadi = await datbar.json();
-    energiR["Panel2"].series[0].points[0].update(parseFloat(jadi[0]['energir']));
-    energis["Panel2"].series[0].points[0].update(parseInt(jadi[0]['energis']));
-    energit["Panel2"].series[0].points[0].update(parseInt(jadi[0]['energit']));
-    energitotal["Panel2"].series[0].points[0].update(parseInt(jadi[0]['energitotal']));
-    dayatotal["Panel2"].series[0].points[0].update(parseInt(jadi[0]['dayatotal']));
-    voltr["Panel2"].series[0].points[0].update(parseInt(jadi[0]['voltr']));
-    volts["Panel2"].series[0].points[0].update(parseInt(jadi[0]['volts']));
-    voltt["Panel2"].series[0].points[0].update(parseInt(jadi[0]['voltt']));
+    energiR["Panel8"].series[0].points[0].update(parseFloat(jadi[0]['energir']));
+    energis["Panel8"].series[0].points[0].update(parseInt(jadi[0]['energis']));
+    energit["Panel8"].series[0].points[0].update(parseInt(jadi[0]['energit']));
+    energitotal["Panel8"].series[0].points[0].update(parseInt(jadi[0]['energitotal']));
+    dayatotal["Panel8"].series[0].points[0].update(parseInt(jadi[0]['dayatotal']));
+    voltr["Panel8"].series[0].points[0].update(parseInt(jadi[0]['voltr']));
+    volts["Panel8"].series[0].points[0].update(parseInt(jadi[0]['volts']));
+    voltt["Panel8"].series[0].points[0].update(parseInt(jadi[0]['voltt']));
 }
 </Script>
 </html>
