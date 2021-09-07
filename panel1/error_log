@@ -1,0 +1,2 @@
+[05-Sep-2021 22:49:16 America/Chicago] PHP Warning:  session_start(): Cannot start session when headers already sent in /home2/nuansaintipersad/public_html/isiatas.php on line 2
+[05-Sep-2021 22:49:30 America/Chicago] PHP Warning:  session_start(): Cannot start session when headers already sent in /home2/nuansaintipersad/public_html/isiatas.php on line 2
