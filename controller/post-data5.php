@@ -34,7 +34,7 @@
 
         //  $sql = "UPDATE hasil SET energir='" . $energiR . "'". ",". "  WHERE panel='". $api_key . "'"; 
          $sql = "UPDATE hasil SET energitotal='" . $kwhtotal . "'".",energir=".$energiR.", energis=".$energiS.",energit=".$energiT.
-                ",voltr=".$voltR.", volts=".$voltS.",voltt=".$voltT.",dayatotal=".$dayatotal." WHERE panel='Panel1'"; 
+                ",voltr=".$voltR.", volts=".$voltS.",voltt=".$voltT.",dayatotal=".$dayatotal." WHERE panel='Panel5'"; 
         // $sql = "UPDATE hasil SET voltr='".$voltR."',energir='".$energiR."',dayatotal='".$dayaR."'where panel='Panel1'"; 
          
          if ($conn->query($sql) === TRUE) {

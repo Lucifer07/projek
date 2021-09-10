@@ -1,16 +1,17 @@
 <?php
-
+// store data untuk panel 0+360
+    include 'testinput.php';
  $servername = "localhost";
  $dbname = "MonitoringJasamarga";
  $username = "root";
  $password = "root";
  $api_key_value ="Panel9";
  
- $api_key = $energiR = $voltR  = $dayaR ="";
+ $api_key9 = $energiR =$energiS=$energiT = $voltR=$voltS=$voltT  = $dayaR ="";
  
  if ($_SERVER["REQUEST_METHOD"] == "POST") {
-     $api_key = test_input($_POST["api_key"]);
-     if($api_key == $api_key_value) {
+     $api_key9 = test_input($_POST["api_key"]);
+     if($api_key9 == $api_key_value) {
          $energiR = test_input($_POST["kwhr"]);
          $energiS = test_input($_POST["kwhs"]);
          $energiT = test_input($_POST["kwht"]);
@@ -25,30 +26,39 @@
          $datadaya = array($dayaR,$dayaS,$dayaT);
          $dayatotal = array_sum($datadaya);
          // Create connection
+        //  $datas =$energiR;
+      
+       
          $conn = new mysqli($servername, $username, $password, $dbname);
+    
          // Check connection
          if ($conn->connect_error) {
              die("Koneksi Gagal :" . $conn->connect_error);
          } 
         //  $sqls = "UPDATE outputs SET state='" . $state . "' WHERE id='". $id .  "'";
-
+           
+        
+       
         //  $sql = "UPDATE hasil SET energir='" . $energiR . "'". ",". "  WHERE panel='". $api_key . "'"; 
          $sql = "UPDATE hasil SET energitotal='" . $kwhtotal . "'".",energir=".$energiR.", energis=".$energiS.",energit=".$energiT.
-                ",voltr=".$voltR.", volts=".$voltS.",voltt=".$voltT.",dayatotal=".$dayatotal." WHERE panel='Panel1'"; 
+                ",voltr=".$voltR.", volts=".$voltS.",voltt=".$voltT.",dayatotal=".$dayatotal." WHERE panel='Panel9'"; 
         // $sql = "UPDATE hasil SET voltr='".$voltR."',energir='".$energiR."',dayatotal='".$dayaR."'where panel='Panel1'"; 
-         
+       
          if ($conn->query($sql) === TRUE) {
              echo "Record baru sukses ditambahkan";
+            
          } 
          else {
              echo "Error: " . $sql . "<br>" . $conn->error;
          }
          $conn->close();
+         
      }
      else {
          echo "Wrong API Key provided.";
      }
-     
+   
  
  }
+
  ?>

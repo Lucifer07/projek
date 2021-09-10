@@ -36,7 +36,7 @@
   <form class="form-signin" method="POST" action="cek_login.php">
     <div class="text-center mb-4">
       <img class="mb-4" src="dist/img/Jasamarga_Bali.webp" alt="" width="120" height="72">
-      <h1 class="h3 mb-3 font-weight-normal">Login Access</h1>
+      <h1 class="h3 mb-3 font-weight-normal">Akses Login</h1>
       <p>TOL BALI MANDARA PJU REMOTE ACCESS <br> PT JASAMARGA BALI TOL  </p>
     </div>
 

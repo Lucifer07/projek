@@ -17,9 +17,9 @@ if (empty($_SESSION['username'])) {
 <Script> 
 document.getElementById("panel").className = "nav-link active"; 
 document.getElementById("panel9").className = "nav-link active";
-document.getElementById("panid").text=" PANEL 4+700";
-document.getElementById("laporandaya").innerHTML = "<strong> PANEL 4+700</strong>";
-document.getElementById("laporan").innerHTML = "PANEL 4+700";
+document.getElementById("panid").text=" PANEL 0+360";
+document.getElementById("laporandaya").innerHTML = "<strong> PANEL 0+360</strong>";
+document.getElementById("laporan").innerHTML = "PANEL 0+360";
 var energiR = [],energis = [], volts = [], voltr = [], voltt = [], energit = [],dayatotal=[],energitotal=[]; 
     var gaugeOptions = {
       chart: {

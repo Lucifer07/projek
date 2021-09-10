@@ -22,6 +22,7 @@ if ($user_valid) {
         session_start();
         $_SESSION['username'] = $user_valid['username'];
         $_SESSION['password'] = $user_valid['password'];
+        
         header('location:panel1/index.php');
         //uji level user
     } else {

@@ -137,7 +137,7 @@
                   <i class="far fa-circle nav-icon"></i>
                   <p>0+360</p>
                 </a>
-              </li> -->
+              </li> 
 
             </ul>
           </li>

@@ -3,6 +3,11 @@ session_start();
 if (empty($_SESSION['username'])) {
     echo "<script>alert('Maaf, untuk mengakses halaman ini, anda harus login terlebih dahulu, terima kasih');document.location='../index.php'</script>";
 }
+if (isset($_SESSION['username'])){
+
+
+$_SESSION['login_user_time']=time();
+}
 // ini maksudnya untuk board 1 ,untuk board 2 dst, ini mengambil baris per baris data pada database , jadinya mudah nanti menampilkan relaynya. (ada html_buttons dari 1 sampai 11)
 ?>
 <?php
@@ -29,25 +34,28 @@ if (empty($_SESSION['username'])) {
         }
     }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="refresh" content="300;url=index.php" />
+    <meta http-equiv="refresh" content="240;url=index.php" />
     <title>PJU Remote Access</title>
     <!-- Bootstrap core CSS , Javascript -->
-    <link rel="shortcut icon" href="dist/img/Jasamarga_Bali.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="../dist/img/Jasamarga_Bali.ico" type="image/x-icon">
     <link href="../dist/css/bootstrap.min.css" rel="stylesheet"> 
     <link href="../dist/css/bootstrap.css" rel="stylesheet"> 
     <link href="../dist/css/bootstrap-grid.css" rel="stylesheet"> 
     <link href="../dist/css/bootstrap-grid.min.css" rel="stylesheet"> 
-    <link href="../dist/css/esp-style.css" rel="stylesheet" >
-    <script
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- <link href="../dist/css/esp-style.css" rel="stylesheet" > -->
+    <!-- <script
 			  src="https://code.jquery.com/jquery-3.6.0.js"
 			  integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
-			  crossorigin="anonymous"></script>
+			  crossorigin="anonymous"></script> -->
 </head>
 <!-- style CSS untuk setiap button ! pada relay -->
 <style>
@@ -73,6 +81,7 @@ if (empty($_SESSION['username'])) {
         display: inline-block;
         width: 55px;
         height: 28px;
+        cursor :pointer;
     }
 
     .switch input {
@@ -145,9 +154,26 @@ if (empty($_SESSION['username'])) {
 
 </style>
 
-
-
     <body>
+    <script type="text/javascript">
+function checkUserTime()
+	{
+		$.ajax({
+			url:"autologout.php",
+			method:"post",
+			success:function(response)
+			{
+				if(response=='Logout')
+				{
+					window.location.href="logout.php";
+				}
+			}
+		});	
+	}
+	setInterval(function(){
+		checkUserTime();
+	},2000);
+</script>
         <script language="JavaScript">
             var tanggallengkap = new String();
             var namahari = ("Minggu Senin Selasa Rabu Kamis Jumat Sabtu");
@@ -174,6 +200,7 @@ if (empty($_SESSION['username'])) {
                     <a class="btn btn-success btn-md  " href="../panel1/" role="button">Monitoring Panel</a>
                     <!-- <a class="btn btn-success btn-md " href="gantipass.php" role="button">Ganti Password</a> -->
                 </div>   
+                 <!-- Awal penampilkan Switch Relay dan function ping  -->
                 <div class="table-responsive bg-white">  
                     <table class="table table-hover table-primary ">
                         <thead >
@@ -205,10 +232,9 @@ if (empty($_SESSION['username'])) {
                             </tr>
                         </thead>
                         <tbody>
-                
+               
                     <?php 
-            
-                    
+
                     function ping($host){
                         $str = exec("ping -n 1 -w 1 $host", $input, $result);
                         if ($result == 0){
@@ -219,27 +245,6 @@ if (empty($_SESSION['username'])) {
                         
                     }
             
-                    if(isset($_REQUEST['go'])){
-                            $arr = ['192.168.0.101','192.168.0.102','192.168.0.103','192.168.0.104','192.168.0.105','192.168.0.106','192.168.0.107','192.168.0.108','192.168.0.109','192.168.0.110','192.168.0.111'];
-                          $arr =$_REQUEST['host'];
-                        for($b=0; $b<count($arr); $b++){
-                            ?>
-                            <pre>
-                            <?php
-                            print_r(ping($arr[$i]));
-                           
-                        }
-                        }
-                        
-
-                        // function pingAddress($ip){
-                        //     $reply=1;
-                        //     $ping =exec("ping -n $reply $ip",$output,$status);
-
-                        
-                        // }
-                      
-                    
                             $DataRa     =[$html_buttons,$html_buttons2,$html_buttons3,$html_buttons4,$html_buttons5,$html_buttons6,$html_buttons7,$html_buttons8,$html_buttons9,$html_buttons10];
                             $DataRas    =[$Button_Ras,$Button_Ras2,$Button_Ras3,$Button_Ras4,$Button_Ras5,$Button_Ras6,$Button_Ras7,$Button_Ras8,$Button_Ras9,$Button_Ras10];
                             $DataRat    =[$Button_Rat,$Button_Rat2,$Button_Rat3,$Button_Rat4,$Button_Rat5,$Button_Rat6,$Button_Rat7,$Button_Rat8,$Button_Rat9,$Button_Rat10];
@@ -253,22 +258,17 @@ if (empty($_SESSION['username'])) {
                                     $count+=1;
                                     echo '<tr><th scope="col">'.$count.'</th>'.'<td scope="col">'.$DataLokasi[$i]."</td>".'<td scope="row">'.'<span id="ip_"'.$count.'>'.ping($Dataip[$i]).'</span>'."</td>".'<td scope="col">'.$DataRa[$i]."</td>".'<td scope="col">'.$DataRas[$i]."</td>".'<td scope="col">'.$DataRat[$i]."</td>".'<td scope="col">'.$DataRb[$i]."</td>".'<td scope="col">'.$DataRbss[$i]."</td>".'<td scope="col">'.$DataRbt[$i]."</td>";
                                 }
-                    //               if (isset($_POST['submit'])){
-                    //         $status="";	
-                    //         foreach($id as $hasil){
-                    //            $status.=ping($hasil);
-                    // }   
+
                         ?>
                 
                 
                         </tbody>
                     </table>
-
+                    <!-- Akhir penampilkan Switch Relay dan function ping  -->
                     </div>  
                 </div>
                 
-        <!-- pembuatan output baru -->
-          
+        <!-- API  -->
 
             <script>
                 function updateOutput(element) {

@@ -2,7 +2,6 @@
     include 'esp-database.php';
 
     $action = $id = $name = $gpio = $state = "";
-   
 
     if ($_SERVER["REQUEST_METHOD"] == "GET") {
         $action = test_input($_GET["action"]);

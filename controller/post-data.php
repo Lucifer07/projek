@@ -1,4 +1,5 @@
 <?php
+// STORE DATA UNTUK PANEL 0N+100
 include 'testinput.php';
  $servername = "localhost";
 
@@ -38,6 +39,8 @@ include 'testinput.php';
          } 
         //  $sqls = "UPDATE outputs SET state='" . $state . "' WHERE id='". $id .  "'";
 
+        
+
         //  $sql = "UPDATE hasil SET energir='" . $energiR . "'". ",". "  WHERE panel='". $api_key . "'"; 
          $sql = "UPDATE hasil SET energitotal='" . $kwhtotal . "'".",energir=".$energiR.", energis=".$energiS.",energit=".$energiT.
                 ",voltr=".$voltR.", volts=".$voltS.",voltt=".$voltT.",dayatotal=".$dayatotal." WHERE panel='Panel1'"; 
@@ -51,6 +54,7 @@ include 'testinput.php';
          }
      
          $conn->close();
+         
      }
      else {
          echo "Wrong API Key provided.";
