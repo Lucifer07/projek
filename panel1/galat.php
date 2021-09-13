@@ -40,7 +40,7 @@
     <section class="sheet padding-10mm">
         <center>
         <img src="../dist/img/Jasamarga_Bali.webp" width="80" height="60">
-        <h1>LAPORAN MONITORING ARUS GALAT PANEL1</BR></h1>
+        <h1>LAPORAN MONITORING TEGANGAN GALAT PANEL1</BR></h1>
         </center>
         <table class="table">
             <thead>

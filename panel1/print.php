@@ -113,10 +113,7 @@ $tgl2=@$_POST['tanggal2'];
                     $energir1[$j]=$energir[$j];
                     $energitotal1[$j]=$energitotal[$j];
                     //
-                    $energis2[$j]=$energis_[$j];
-                    $energit2[$j]=$energit_[$j];
-                    $energir2[$j]=$energir_[$j];
-                    $energitotal2[$j]=$energitotal_[$j];
+                   
                 }
                 else {
                     $d=$j-1;
@@ -125,22 +122,29 @@ $tgl2=@$_POST['tanggal2'];
                     $energir1[$j]=$energir[$j]-$energir[$d];
                     $energitotal1[$j]=$energitotal[$j]-$energitotal[$d];
                     //
+            
+                }
+                
+            }
+            for ($j=0; $j < count($energitotal_); $j++) { 
+                
+                if ($j==0) {
+                    
+                    //
+                    $energis2[$j]=$energis_[$j];
+                    $energit2[$j]=$energit_[$j];
+                    $energir2[$j]=$energir_[$j];
+                    $energitotal2[$j]=$energitotal_[$j];
+                }
+                else {
+                    $d=$j-1;
+                    //
                     $energis2[$j]=$energis_[$j]-$energis_[$d];
                     $energit2[$j]=$energit_[$j]-$energit_[$d];
                     $energir2[$j]=$energir_[$j]-$energir_[$d];
                     $energitotal2[$j]=$energitotal_[$j]-$energitotal_[$d];
                 }
                 
-            }
-            
-            for ($t=0; $t < count($energir1); $t++) { 
-                echo "<tr>
-                    <td>".$tanggal[$t]."</td>
-                    <td>".$energir1[$t]*1444.44."</td>
-                    <td>".$energis1[$t]*1444.44."</td>
-                    <td>".$energit1[$t]*1444.44."</td>
-                    <td>".$energitotal1[$t]*1444.44."</td>
-                    </tr>";
             }
             for ($q=0; $q < count($energir2); $q++) { 
                 echo "<tr>
@@ -151,6 +155,16 @@ $tgl2=@$_POST['tanggal2'];
                     <td>".$energitotal2[$q]*1444.44."</td>
                     </tr>";
             }
+            for ($t=0; $t < count($energir1); $t++) { 
+                echo "<tr>
+                    <td>".$tanggal[$t]."</td>
+                    <td>".$energir1[$t]*1444.44."</td>
+                    <td>".$energis1[$t]*1444.44."</td>
+                    <td>".$energit1[$t]*1444.44."</td>
+                    <td>".$energitotal1[$t]*1444.44."</td>
+                    </tr>";
+            }
+            
             ?>
             
             </tbody>
