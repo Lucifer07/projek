@@ -13,7 +13,7 @@
         $query="DELETE from panel1 where energitotal<'$data' and day(tanggal)='$h' and month(tanggal)='$bln' ";
         mysqli_query($koneksi, $query);
     }
-    $sql3 =mysqli_query($koneksi, "SELECT * FROM panel1 WHERE day(tanggal)='$h' and month(tanggal)='$bln' ");
+    $sql3 =mysqli_query($koneksi, "SELECT * FROM panel1 WHERE month(tanggal) between $bln-1 and '$bln' ");
     while ($row = mysqli_fetch_assoc($sql3)) {
         $data1[] = $row;
     }

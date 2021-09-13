@@ -12,7 +12,6 @@
 document.getElementById("panel").className = "nav-link active"; 
 document.getElementById("panel2").className = "nav-link active";
 document.getElementById("panid").text="panel2";
-document.getElementById("laporandaya").innerHTML = "<strong> Laporan Panel 2</strong>";
 document.getElementById("laporan").innerHTML = "Laporan Panel 2";
 var energiR = [],energis = [], volts = [], voltr = [], voltt = [], energit = [],dayatotal=[],energitotal=[]; 
     var gaugeOptions = {

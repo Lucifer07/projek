@@ -29,9 +29,9 @@ if ($data) {
             echo "<script>alert('Password anda berhasil diubah, silahkan logout untuk menguji password baru anda.!');document.location='home_admin.php'</script>";
         }
     } else {
-        echo "<script>alert('Maaf, Password Baru & Konfirmasi password yang anda inputkan tidak sama!');document.location='gantipass.php'</script>";
+        echo "<script>alert('Maaf, Password Baru & Konfirmasi password yang anda inputkan tidak sama!');document.location='edit/'</script>";
     }
 } else {
-    echo "<script>alert('Maaf, Password lama anda tidak sesuai/tidak terdaftar!');document.location='gantipass.php'</script>";
+    echo "<script>alert('Maaf, Password lama anda tidak sesuai/tidak terdaftar!');document.location='edit/'</script>";
 }
 ?>

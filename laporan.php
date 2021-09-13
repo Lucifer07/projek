@@ -25,6 +25,9 @@
                     <div id="container-vr" class="chart-container"></div>
                     <div id="container-vs" class="chart-container"></div>
                     <div id="container-vt" class="chart-container"></div>
+                    <div id="container-cr" class="chart-container"></div>
+                    <div id="container-cs" class="chart-container"></div>
+                    <div id="container-ct" class="chart-container"></div>
                   </figure>
                 </div>
               </div>
@@ -50,13 +53,8 @@
               <div class="card-body">
                 <div class="row">
                   <div  class="col-md-8">
-                    <p id=laporandaya class="text-center">
-                      <strong>Laporan</strong>
-                    </p>
-
                     <div class="chart">
-                      <!-- Sales Chart Canvas -->
-                      <canvas id="visitors-chart"></canvas>
+                      <canvas id="pemakaian-chart"></canvas>
                     </div>
                     <!-- /.chart-responsive -->
                   </div>
@@ -68,12 +66,29 @@
 
                     <div class="progress-group">
                       Rp.
-                      <span class="float-right"><b>1000000</b>/2000000</span>
+                      <span class="float-right"><b id=bln>1000000</b>/<b id=bln2>2000000</b></span>
                       <div class="progress progress-sm">
-                        <div class="progress-bar bg-primary" style="width: 50%"></div>
+                        <div id=prog class="progress-bar bg-primary" style="width: 10%"></div>
                       </div>
                     </div>
+                    <div>
+                      <form action="print.php" method="post">
+                      <p>
+                      <center>
+                          <input type="date" name="tanggal" >
+                          to
+                          <input type="date" name="tanggal2" >
+                      </center>
+	                   </p>
+                     <button type="submit" value="kirim" class="btn btn-block btn-success btn-sm">Cetak Data</button>
+                      </form>
+                      <p></p>
+                      <form action="galat.php" method="post">
+                      <button type="submit" value="kirim" class="btn btn-block btn-danger btn-sm">Cetak Data Arus Tidak Stabil</button>
+                      </form>
+                    </div>
                   </div>
+
                   <!-- /.col -->
                 </div>
                 <!-- /.row -->
