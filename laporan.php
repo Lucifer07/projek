@@ -84,7 +84,7 @@
                       </form>
                       <p></p>
                       <form action="galat.php" method="post">
-                      <button type="submit" value="kirim" class="btn btn-block btn-danger btn-sm">Cetak Data Arus Tidak Stabil</button>
+                      <button type="submit" value="kirim" class="btn btn-block btn-danger btn-sm">Cetak Data Voltage Tidak Stabil</button>
                       </form>
                     </div>
                   </div>
