@@ -149,16 +149,6 @@ $tgl2="$b[0]-$b[1]-$b[2]";
                 }
                 
             }
-        for ($q=0; $q < count($energir2); $q++) { 
-            echo "<tr>
-                <td>".$tanggal_[$q]."</td>
-                <td>".$energir2[$q]."</td>
-                <td>".$energis2[$q]."</td>
-                <td>".$energit2[$q]."</td>
-                <td>".$energitotal2[$q]."</td>
-                <td>".$energitotal2[$q]*1444.44."</td>
-                </tr>";
-        }
         for ($t=0; $t < count($energir1); $t++) { 
             echo "<tr>
                 <td>".$tanggal[$t]."</td>
@@ -169,6 +159,17 @@ $tgl2="$b[0]-$b[1]-$b[2]";
                 <td>".$energitotal1[$t]*1444.44."</td>
                 </tr>";
         }
+        for ($q=0; $q < count($energir2); $q++) { 
+            echo "<tr>
+                <td>".$tanggal_[$q]."</td>
+                <td>".$energir2[$q]."</td>
+                <td>".$energis2[$q]."</td>
+                <td>".$energit2[$q]."</td>
+                <td>".$energitotal2[$q]."</td>
+                <td>".$energitotal2[$q]*1444.44."</td>
+                </tr>";
+        }
+        
             
             ?>
             
