@@ -498,6 +498,9 @@ async function gauge(){
     }
     const datbar = await fetch(data);
     const jadi = await datbar.json();
+    var tg=jadi[0]['tanggal'];
+    var a= tg.split(" ");
+    var b=a[1];
     energiR["Panel1"].series[0].points[0].update(parseFloat(jadi[0]['energir']));
     energis["Panel1"].series[0].points[0].update(parseFloat(jadi[0]['energis']));
     energit["Panel1"].series[0].points[0].update(parseFloat(jadi[0]['energit']));
@@ -509,7 +512,7 @@ async function gauge(){
     currentr["Panel1"].series[0].points[0].update(parseFloat(jadi[0]['currentr']));
     currents["Panel1"].series[0].points[0].update(parseFloat(jadi[0]['currents']));
     currentt["Panel1"].series[0].points[0].update(parseFloat(jadi[0]['currentt']));
-    myLineChart.data.labels.push("s");
+    myLineChart.data.labels.push(b);
     myLineChart.data.datasets[0].data.push(jadi[0]['voltr']);
     myLineChart.data.datasets[1].data.push(jadi[0]['volts']);
     myLineChart.data.datasets[2].data.push(jadi[0]['voltt']);
