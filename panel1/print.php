@@ -5,7 +5,18 @@ $a=@$_POST['tanggal2'];
 $b=explode("-",$a);
 $b[2]+=1;
 $tgl2="$b[0]-$b[1]-$b[2]";
-
+$h=date('d');
+$z=date('m');
+$bln=(int)$z;
+$sql =mysqli_query($koneksi, "SELECT max(energitotal) FROM panel1 WHERE day(tanggal)='$h' and month(tanggal)='$bln' ");
+$dapat=mysqli_fetch_array($sql);
+$data=$dapat['max(energitotal)'];
+$sql2 =mysqli_query($koneksi, "SELECT energitotal FROM panel1 WHERE day(tanggal)='$h' and month(tanggal)='$bln' ");
+$jumlah = mysqli_num_rows($sql2);
+if ($jumlah>1) {
+    $query="DELETE from panel1 where energitotal<'$data' and day(tanggal)=$h and month(tanggal)=$bln ";
+    mysqli_query($koneksi, $query);
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
