@@ -1,7 +1,11 @@
 <?php
 include '../koneksi.php';
 $tgl1 = @$_POST['tanggal'];
-$tgl2=@$_POST['tanggal2'];
+$a=@$_POST['tanggal2'];
+$b=explode("-",$a);
+$b[2]+=1;
+$tgl2="$b[0]-$b[1]-$b[2]";
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -45,7 +49,7 @@ $tgl2=@$_POST['tanggal2'];
     <section class="sheet padding-10mm">
         <center>
         <img src="../dist/img/Jasamarga_Bali.webp" width="80" height="60">
-        <h1>LAPORAN MONITORING PANEL1</BR><?= $tgl1?> HINGGA <?= $tgl2?></h1>
+        <h1>LAPORAN MONITORING PANEL1</BR><?= $tgl1?> HINGGA <?= $a?></h1>
         </center>
         <table class="table">
             <thead>
@@ -55,6 +59,7 @@ $tgl2=@$_POST['tanggal2'];
                     <th>ENERGIS</th>
                     <th>ENERGIT</th>
                     <th>ENERGITOTAL</th>
+                    <th>BIAYA</th>
                 </tr>
             </thead>
             <tbody>
@@ -78,92 +83,92 @@ $tgl2=@$_POST['tanggal2'];
             $energit2=[];
             $energir2=[];
             $energitotal2=[];
+            $no=0;
+            $no2=0;
+            $r=[];
             foreach ($cek_data as $row){
                 $tag=$row['tanggal'];
                 $tag2=explode("-",$tag);
                 $har=explode(" ",$tag2[2]);
-                if ($tag2[1]==date('m')) {
-                    for ($i=1; $i <32 ; $i++) { 
-                        if ($har[0]==$i) {
-                            $energir[$i-1]=$row['energir'];
-                            $energis[$i-1]=$row['energis'];
-                            $energit[$i-1]=$row['energit'];
-                            $energitotal[$i-1]=$row['energitotal'];
-                            $tanggal[$i-1]=$row['tanggal'];
-                        }
-                    }
+                if (count($r)==0) {
+                    $r[0]=$tag2[1];
+                    $energir[0]=$row['energir'];
+                    $energis[0]=$row['energis'];
+                    $energit[0]=$row['energit'];
+                    $energitotal[0]=$row['energitotal'];
+                    $tanggal[0]=$row['tanggal'];
+                    $no++;
                 }
-                elseif ($tag2[1]==date('m')-1) {
-                    for ($a=1; $a <32 ; $a++) { 
-                        if ($har[0]==$a) {
-                            $energir_[$a-1]=$row['energir'];
-                            $energis_[$a-1]=$row['energis'];
-                            $energit_[$a-1]=$row['energit'];
-                            $energitotal_[$a-1]=$row['energitotal'];
-                            $tanggal_[$a-1]=$row['tanggal'];
-                        }
-                    }
+                elseif ($r[0]==$tag2[1]) {
+                    $energir["$no"]=$row['energir'];
+                    $energis["$no"]=$row['energis'];
+                    $energit["$no"]=$row['energit'];
+                    $energitotal["$no"]=$row['energitotal'];
+                    $tanggal["$no"]=$row['tanggal'];
+                    $no++;
+                }
+                
+                elseif ($tag2[1]!=$r[0]) {
+                    $energir_["$no2"]=$row['energir'];
+                    $energis_["$no2"]=$row['energis'];
+                    $energit_["$no2"]=$row['energit'];
+                    $energitotal_["$no2"]=$row['energitotal'];
+                    $tanggal_["$no2"]=$row['tanggal'];
+                    $no2++;
                 }
             }
             for ($j=0; $j < count($energitotal); $j++) { 
-                
                 if ($j==0) {
                     $energis1[$j]=$energis[$j];
                     $energit1[$j]=$energit[$j];
                     $energir1[$j]=$energir[$j];
                     $energitotal1[$j]=$energitotal[$j];
-                    //
-                   
                 }
                 else {
-                    $d=$j-1;
-                    $energis1[$j]=$energis[$j]-$energis[$d];
-                    $energit1[$j]=$energit[$j]-$energit[$d];
-                    $energir1[$j]=$energir[$j]-$energir[$d];
-                    $energitotal1[$j]=$energitotal[$j]-$energitotal[$d];
-                    //
-            
+                    $energis1[$j]=$energis[$j]-$energis[$j-1];
+                    $energit1[$j]=$energit[$j]-$energit[$j-1];
+                    $energir1[$j]=$energir[$j]-$energir[$j-1];
+                    $energitotal1[$j]=$energitotal[$j]-$energitotal[$j-1];
                 }
                 
-            }
-            for ($j=0; $j < count($energitotal_); $j++) { 
-                
-                if ($j==0) {
-                    
-                    //
-                    $energis2[$j]=$energis_[$j];
-                    $energit2[$j]=$energit_[$j];
-                    $energir2[$j]=$energir_[$j];
-                    $energitotal2[$j]=$energitotal_[$j];
+             }
+            for ($ui=0; $ui < count($energitotal_); $ui++) { 
+                if ($ui==0) {
+                    $energis2[$ui]=$energis_[$ui];
+                    $energit2[$ui]=$energit_[$ui];
+                    $energir2[$ui]=$energir_[$ui];
+                    $energitotal2[$ui]=$energitotal_[$ui];
                 }
                 else {
-                    $d=$j-1;
+                    $d=$ui-1;
                     //
-                    $energis2[$j]=$energis_[$j]-$energis_[$d];
-                    $energit2[$j]=$energit_[$j]-$energit_[$d];
-                    $energir2[$j]=$energir_[$j]-$energir_[$d];
-                    $energitotal2[$j]=$energitotal_[$j]-$energitotal_[$d];
+                    $energis2[$ui]=$energis_[$ui]-$energis_[$d];
+                    $energit2[$ui]=$energit_[$ui]-$energit_[$d];
+                    $energir2[$ui]=$energir_[$ui]-$energir_[$d];
+                    $energitotal2[$ui]=$energitotal_[$ui]-$energitotal_[$d];
                 }
                 
             }
-            for ($q=0; $q < count($energir2); $q++) { 
-                echo "<tr>
-                    <td>".$tanggal_[$q]."</td>
-                    <td>".$energir2[$q]*1444.44."</td>
-                    <td>".$energis2[$q]*1444.44."</td>
-                    <td>".$energit2[$q]*1444.44."</td>
-                    <td>".$energitotal2[$q]*1444.44."</td>
-                    </tr>";
-            }
-            for ($t=0; $t < count($energir1); $t++) { 
-                echo "<tr>
-                    <td>".$tanggal[$t]."</td>
-                    <td>".$energir1[$t]*1444.44."</td>
-                    <td>".$energis1[$t]*1444.44."</td>
-                    <td>".$energit1[$t]*1444.44."</td>
-                    <td>".$energitotal1[$t]*1444.44."</td>
-                    </tr>";
-            }
+        for ($q=0; $q < count($energir2); $q++) { 
+            echo "<tr>
+                <td>".$tanggal_[$q]."</td>
+                <td>".$energir2[$q]."</td>
+                <td>".$energis2[$q]."</td>
+                <td>".$energit2[$q]."</td>
+                <td>".$energitotal2[$q]."</td>
+                <td>".$energitotal2[$q]*1444.44."</td>
+                </tr>";
+        }
+        for ($t=0; $t < count($energir1); $t++) { 
+            echo "<tr>
+                <td>".$tanggal[$t]."</td>
+                <td>".$energir1[$t]."</td>
+                <td>".$energis1[$t]."</td>
+                <td>".$energit1[$t]."</td>
+                <td>".$energitotal1[$t]."</td>
+                <td>".$energitotal1[$t]*1444.44."</td>
+                </tr>";
+        }
             
             ?>
             
@@ -172,6 +177,5 @@ $tgl2=@$_POST['tanggal2'];
     </section>
 </body>
 <SCript>
-    window.print()
 </SCript>
 </html>
