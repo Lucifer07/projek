@@ -402,23 +402,23 @@ currentt["Panel1"] = Highcharts.chart("container-ct", Highcharts.merge(gaugeOpti
 //fungsi line
 var elementnya = document.getElementById('pemakaian-chart');
 var datanya = {
-    labels: ["1", "2", "3", "4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31"],
+    labels: [],
     datasets: [
         {
-            label: "Pemakaian Bulan ini",
+            label: "Vr",
             fill: false,
             lineTension: 0.1,
-            backgroundColor: "rgba(75,192,192,0.4)",
-            borderColor: "rgba(75,192,192,1)",
+            backgroundColor: "rgba(255,0,0,0.4)",
+            borderColor: "rgba(255,0,0,1)",
             borderCapStyle: 'butt',
             borderDash: [],
             borderDashOffset: 0.0,
             borderJoinStyle: 'miter',
-            pointBorderColor: "rgba(75,192,192,1)",
+            pointBorderColor: "rgba(255,0,0,1)",
             pointBackgroundColor: "#fff",
             pointBorderWidth: 1,
             pointHoverRadius: 5,
-            pointHoverBackgroundColor: "rgba(75,192,192,1)",
+            pointHoverBackgroundColor: "rgba(255,0,0,1)",
             pointHoverBorderColor: "rgba(220,220,220,1)",
             pointHoverBorderWidth: 2,
             pointRadius: 5,
@@ -426,21 +426,42 @@ var datanya = {
             data: [],
         },
         {
-            label: "Pemakaian bulan Lalu",
+            label: "vs",
             fill: false,
             lineTension: 0.1,
-            backgroundColor: "rgba(179, 179, 179, o.4)",
-            borderColor: "rgba(179, 179, 179, 1)",
+            backgroundColor: "rgba(255,255,0, o.4)",
+            borderColor: "rgba(255,255,0, 1)",
             borderCapStyle: 'butt',
             borderDash: [],
             borderDashOffset: 0.0,
             borderJoinStyle: 'miter',
-            pointBorderColor: "rgba(179, 179, 179, 1)",
+            pointBorderColor: "rgba(255,255,0, 1)",
             pointBackgroundColor: "#fff",
             pointBorderWidth: 1,
             pointHoverRadius: 5,
-            pointHoverBackgroundColor: "rgba(179, 179, 179, 1)",
-            pointHoverBorderColor: "rgba(179, 179, 179, 1)",
+            pointHoverBackgroundColor: "rgba(255,255,0, 1)",
+            pointHoverBorderColor: "rgba(255,255,0, 1)",
+            pointHoverBorderWidth: 2,
+            pointRadius: 5,
+            pointHitRadius: 10,
+            data: [],
+        },
+        {
+            label: "vt",
+            fill: false,
+            lineTension: 0.1,
+            backgroundColor: "rgba(0,255,0, o.4)",
+            borderColor: "rgba(0,255,0, 1)",
+            borderCapStyle: 'butt',
+            borderDash: [],
+            borderDashOffset: 0.0,
+            borderJoinStyle: 'miter',
+            pointBorderColor: "rgba(0,255,0, 1)",
+            pointBackgroundColor: "#fff",
+            pointBorderWidth: 1,
+            pointHoverRadius: 5,
+            pointHoverBackgroundColor: "rgba(0,255,0, 1)",
+            pointHoverBorderColor: "rgba(0,255,0, 1)",
             pointHoverBorderWidth: 2,
             pointRadius: 5,
             pointHitRadius: 10,
@@ -458,7 +479,6 @@ var myLineChart = Chart.Line(elementnya,{
 });
 //data
 const data= 'fun.php';
-const lindat='fun2.php';
 $(document).ready(function() {
     selesai();
 });
@@ -466,11 +486,16 @@ $(document).ready(function() {
 function selesai() {
 	setTimeout(function() {
 		gauge();
-    line();
+    //line();
 		selesai();
 	}, 200);
 }
 async function gauge(){
+    if (myLineChart.data.labels.length==20) {
+        myLineChart.data.labels=[];
+        myLineChart.data.datasets[0].data=[];
+        myLineChart.data.datasets[1].data=[];
+    }
     const datbar = await fetch(data);
     const jadi = await datbar.json();
     energiR["Panel1"].series[0].points[0].update(parseFloat(jadi[0]['energir']));
@@ -484,74 +509,11 @@ async function gauge(){
     currentr["Panel1"].series[0].points[0].update(parseFloat(jadi[0]['currentr']));
     currents["Panel1"].series[0].points[0].update(parseFloat(jadi[0]['currents']));
     currentt["Panel1"].series[0].points[0].update(parseFloat(jadi[0]['currentt']));
-}
-async function line(){
-  const ld= await fetch(lindat);
-  const jadi2= await ld.json();
-  let skrg=[];
-  let skrg2=[];
-  let lalu=[];
-  let lalu2=[];
-  for (let i = 0; i <jadi2.length; i++) {
-    
- //bulan ini
- var xl= jadi2[i]['tanggal'];
- var lx=xl.split('-');
- var yx = lx[2].split(' ');
-    if (lx[1]==<?php $bul=date('m'); echo (int)$bul;?>) {
-      for (let x = 1; x < 32; x++) {
-        if (yx[0]==x) {
-          skrg[x-1]=jadi2[i]['energitotal'];
-        }
-      }
-    }
-    //bulan lalu
-    else if (lx[1]==<?php $bul=date('m'); echo (int)$bul-1;?>) {
-      for (let x = 1; x < 32; x++) {
-        if (yx[0]==x) {
-          lalu[x-1]=jadi2[i]['energitotal'];
-        }
-      }
-    }
-  }
-// dekvar
-for (let j =0; j <skrg.length ; j++) {
-        if (j==0) {
-            skrg2[j]=parseInt(skrg[j]);
-        }
-        else{
-            skrg2[j]=skrg[j]-skrg[j-1];
-        }
-    }
-    for (let r =0; r <lalu.length ; r++) {
-        if (r==0) {
-            lalu2[r]=parseInt(lalu[r]);
-        }
-        else{
-            lalu2[r]=lalu[r]-lalu[r-1];
-        }
-    }
-    for (let z = 0; z < 31; z++) {
-    myLineChart.data.datasets[0].data[z]=skrg2[z]*1444.44;
-    myLineChart.data.datasets[1].data[z]=lalu2[z]*1444.44;
+    myLineChart.data.labels.push("s");
+    myLineChart.data.datasets[0].data.push(jadi[0]['voltr']);
+    myLineChart.data.datasets[1].data.push(jadi[0]['volts']);
+    myLineChart.data.datasets[2].data.push(jadi[0]['voltt']);
     myLineChart.update();
-    }
-    var tskrg=0;
-    var tlalu=0;
-    for (let o = 0; o < skrg2.length; o++) {
-        tskrg += skrg2[o];
-    }
-    for (let q = 0; q < lalu2.length; q++) {
-        tlalu += lalu2[q];
-    }
-b1=document.getElementById("bln");
-b2=document.getElementById("bln2");
-b3=document.getElementById("prog");
-b1.innerHTML = tskrg*1444.44;
-b2.innerHTML = tlalu*1444.44;
-var prs=(tskrg/tlalu)*100;
-b3.style.width=prs+"%";
-
 }
 </Script>
 </html>

@@ -177,5 +177,6 @@ $tgl2="$b[0]-$b[1]-$b[2]";
     </section>
 </body>
 <SCript>
+    window.print()
 </SCript>
 </html>
