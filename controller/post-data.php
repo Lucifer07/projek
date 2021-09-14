@@ -35,6 +35,8 @@ include 'testinput.php';
          $currentT = test_input($_POST["currentt"]);
          // Create connection
          $conn = new mysqli($servername, $username, $password, $dbname);
+         $sql = "INSERT INTO panel1(energis, energit, energir, voltr, volts, voltt, energitotal, currentr, currents, currentt, dayatotal) VALUES ($energiS, $energiT, $energiR, $voltR, $voltS, $voltT, $kwhtotal, $currentR, $currentS, $currentT, $dayatotal)";
+         mysqli_query($conn, $query);
          // Check connection
          if ($conn->connect_error) {
              die("Koneksi Gagal :" . $conn->connect_error);
@@ -42,19 +44,9 @@ include 'testinput.php';
         //  $sqls = "UPDATE outputs SET state='" . $state . "' WHERE id='". $id .  "'";
         if ($currentR<200 or $currentS<200 or $currentT<200) {
             $query="INSERT INTO panel1_(energis, energit, energir, voltr, volts, voltt, energitotal, currentr, currents, currentt, dayatotal) VALUES ($energiS, $energiT, $energiR, $voltR, $voltS, $voltT, $kwhtotal, $currentR, $currentS, $currentT, $dayatotal)";
-            mysqli_query($koneksi, $query);
+            mysqli_query($conn, $query);
         }
-        //  $sql = "UPDATE hasil SET energir='" . $energiR . "'". ",". "  WHERE panel='". $api_key . "'"; 
-         $sql = "INSERT INTO panel1(energis, energit, energir, voltr, volts, voltt, energitotal, currentr, currents, currentt, dayatotal) VALUES ($energiS, $energiT, $energiR, $voltR, $voltS, $voltT, $kwhtotal, $currentR, $currentS, $currentT, $dayatotal)";
-         if ($conn->query($sql) === TRUE) {
-             echo "Record baru sukses ditambahkan";
-         } 
-         else {
-             echo "Error: " . $sql . "<br>" . $conn->error;
-         }
-     
-         $conn->close();
-     }
+        //  $sql = "UPDATE hasil SET energir='" . $energiR . "'". ",". "  WHERE panel='". $api_key . "'";     
      else {
          echo "Wrong API Key provided.";
      }

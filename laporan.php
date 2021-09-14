@@ -61,15 +61,10 @@
                   <!-- /.col -->
                   <div class="col-md-4">
                     <p class="text-center">
-                      <strong>Perhitungan Total Biaya</strong>
+                      <strong>Cetak data</strong>
                     </p>
 
                     <div class="progress-group">
-                      Rp.
-                      <span class="float-right"><b id=bln>1000000</b>/<b id=bln2>2000000</b></span>
-                      <div class="progress progress-sm">
-                        <div id=prog class="progress-bar bg-primary" style="width: 10%"></div>
-                      </div>
                     </div>
                     <div>
                       <form action="print.php" method="post">

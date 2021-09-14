@@ -10,7 +10,8 @@
     $sql2 =mysqli_query($koneksi, "SELECT energitotal FROM panel1 WHERE day(tanggal)='$h' and month(tanggal)='$bln' ");
     $jumlah = mysqli_num_rows($sql2);
     if ($jumlah>1) {
-        $query="DELETE from panel1 where energitotal<'$data' and day(tanggal)='$h' and month(tanggal)='$bln' ";
+        
+        $query="DELETE from panel1 where energitotal<'$data' and day(tanggal)=$h and month(tanggal)=$bln ";
         mysqli_query($koneksi, $query);
     }
     $sql3 =mysqli_query($koneksi, "SELECT * FROM panel1 WHERE day(tanggal)='$h' and month(tanggal)='$bln' ");
