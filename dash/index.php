@@ -523,13 +523,14 @@ function selesai() {
 }
 
 async function gauge(){
-    if (myLineChart.data.labels.length==20) {
+  if (myLineChart.data.labels.length==20) {
         myLineChart.data.labels=[];
         myLineChart.data.datasets[0].data=[];
         myLineChart.data.datasets[1].data=[];
         myLineChart.data.datasets[2].data=[];
     }
     //p1
+    try {
     const datbar = await fetch(link);
     const jadi = await datbar.json();
     dataenergir[0]=parseFloat(jadi[0]['energir']);
@@ -543,7 +544,22 @@ async function gauge(){
     datacurrentt[0]=parseFloat(jadi[0]['currentt']);
     dataenergitotal[0]=parseFloat(jadi[0]['energitotal']);
     datadayatotal[0]=parseFloat(jadi[0]['dayatotal']);
+    } catch (error) {
+    dataenergir[0]=0;
+    dataenergis[0]=0;
+    dataenergit[0]=0;
+    datavoltr[0]=0;
+    datavolts[0]=0;
+    datavoltt[0]=0;
+    datacurrentr[0]=0;
+    datacurrents[0]=0;
+    datacurrentt[0]=0;
+    dataenergitotal[0]=0;
+    datadayatotal[0]=0;
+    }
+
     //p2
+    try {
     const datbar1 = await fetch(link1);
     const jadi1 = await datbar1.json();
     dataenergir[1]=parseFloat(jadi1[0]['energir']);
@@ -557,8 +573,23 @@ async function gauge(){
     datacurrentt[1]=parseFloat(jadi1[0]['currentt']);
     dataenergitotal[1]=parseFloat(jadi1[0]['energitotal']);
     datadayatotal[1]=parseFloat(jadi1[0]['dayatotal']);
-    /*
+    } catch (error) {
+    dataenergir[1]=0;
+    dataenergis[1]=0;
+    dataenergit[1]=0;
+    datavoltr[1]=0;
+    datavolts[1]=0;
+    datavoltt[1]=0;
+    datacurrentr[1]=0;
+    datacurrents[1]=0;
+    datacurrentt[1]=0;
+    dataenergitotal[1]=0;
+    datadayatotal[1]=0;
+    }
+    
+    
     //p3
+    try {
     const datbar2 = await fetch(link2);
     const jadi2 = await datbar2.json();
     dataenergir[2]=parseFloat(jadi2[0]['energir']);
@@ -571,8 +602,23 @@ async function gauge(){
     datacurrents[2]=parseFloat(jadi2[0]['currents']);
     datacurrentt[2]=parseFloat(jadi2[0]['currentt']);
     dataenergitotal[2]=parseFloat(jadi2[0]['energitotal']);
-    datadayatotal[2]=parseFloat(jadi2[0]['dayatotal']);
+    datadayatotal[2]=parseFloat(jadi2[0]['dayatotal']);  
+    } catch (error) {
+    dataenergir[2]=0;
+    dataenergis[2]=0;
+    dataenergit[2]=0;
+    datavoltr[2]=0;
+    datavolts[2]=0;
+    datavoltt[2]=0;
+    datacurrentr[2]=0;
+    datacurrents[2]=0;
+    datacurrentt[2]=0;
+    dataenergitotal[2]=0;
+    datadayatotal[2]=0;
+    }
+    
     //p4
+    try {
     const datbar3 = await fetch(link3);
     const jadi3 = await datbar3.json();
     dataenergir[3]=parseFloat(jadi3[0]['energir']);
@@ -586,7 +632,22 @@ async function gauge(){
     datacurrentt[3]=parseFloat(jadi3[0]['currentt']);
     dataenergitotal[3]=parseFloat(jadi3[0]['energitotal']);
     datadayatotal[3]=parseFloat(jadi3[0]['dayatotal']);
+    } catch (error) {
+    dataenergir[3]=0;
+    dataenergis[3]=0;
+    dataenergit[3]=0;
+    datavoltr[3]=0;
+    datavolts[3]=0;
+    datavoltt[3]=0;
+    datacurrentr[3]=0;
+    datacurrents[3]=0;
+    datacurrentt[3]=0;
+    dataenergitotal[3]=0;
+    datadayatotal[3]=0;
+    }
+    
     //p5
+    try {
     const datbar4 = await fetch(link4);
     const jadi4 = await datbar4.json();
     dataenergir[4]=parseFloat(jadi4[0]['energir']);
@@ -600,7 +661,22 @@ async function gauge(){
     datacurrentt[4]=parseFloat(jadi4[0]['currentt']);
     dataenergitotal[4]=parseFloat(jadi4[0]['energitotal']);
     datadayatotal[4]=parseFloat(jadi4[0]['dayatotal']);
+    } catch (error) {
+    dataenergir[4]=0;
+    dataenergis[4]=0;
+    dataenergit[4]=0;
+    datavoltr[4]=0;
+    datavolts[4]=0;
+    datavoltt[4]=0;
+    datacurrentr[4]=0;
+    datacurrents[4]=0;
+    datacurrentt[4]=0;
+    dataenergitotal[4]=0;
+    datadayatotal[4]=0;
+    }
+    
     //p6
+    try {
     const datbar5 = await fetch(link5);
     const jadi5 = await datbar5.json();
     dataenergir[5]=parseFloat(jadi5[0]['energir']);
@@ -614,7 +690,22 @@ async function gauge(){
     datacurrentt[5]=parseFloat(jadi5[0]['currentt']);
     dataenergitotal[5]=parseFloat(jadi5[0]['energitotal']);
     datadayatotal[5]=parseFloat(jadi5[0]['dayatotal']);
+    } catch (error) {
+    dataenergir[5]=0;
+    dataenergis[5]=0;
+    dataenergit[5]=0;
+    datavoltr[5]=0;
+    datavolts[5]=0;
+    datavoltt[5]=0;
+    datacurrentr[5]=0;
+    datacurrents[5]=0;
+    datacurrentt[5]=0;
+    dataenergitotal[5]=0;
+    datadayatotal[5]=0;
+    }
+    
     //p7
+    try {
     const datbar6 = await fetch(link6);
     const jadi6 = await datbar6.json();
     dataenergir[6]=parseFloat(jadi6[0]['energir']);
@@ -628,7 +719,22 @@ async function gauge(){
     datacurrentt[6]=parseFloat(jadi6[0]['currentt']);
     dataenergitotal[6]=parseFloat(jadi6[0]['energitotal']);
     datadayatotal[6]=parseFloat(jadi6[0]['dayatotal']);
+    } catch (error) {
+    dataenergir[6]=0;
+    dataenergis[6]=0;
+    dataenergit[6]=0;
+    datavoltr[6]=0;
+    datavolts[6]=0;
+    datavoltt[6]=0;
+    datacurrentr[6]=0;
+    datacurrents[6]=0;
+    datacurrentt[6]=0;
+    dataenergitotal[6]=0;
+    datadayatotal[6]=0;
+    }
+    
     //p8
+    try {
     const datbar7 = await fetch(link7);
     const jadi7 = await datbar7.json();
     dataenergir[7]=parseFloat(jadi7[0]['energir']);
@@ -642,7 +748,22 @@ async function gauge(){
     datacurrentt[7]=parseFloat(jadi7[0]['currentt']);
     dataenergitotal[7]=parseFloat(jadi7[0]['energitotal']);
     datadayatotal[7]=parseFloat(jadi7[0]['dayatotal']);
+    } catch (error) {
+    dataenergir[7]=0;
+    dataenergis[7]=0;
+    dataenergit[7]=0;
+    datavoltr[7]=0;
+    datavolts[7]=0;
+    datavoltt[7]=0;
+    datacurrentr[7]=0;
+    datacurrents[7]=0;
+    datacurrentt[7]=0;
+    dataenergitotal[7]=0;
+    datadayatotal[7]=0;
+    }
+    
     //p9
+    try {
     const datbar8 = await fetch(link8);
     const jadi8 = await datbar8.json();
     dataenergir[8]=parseFloat(jadi8[0]['energir']);
@@ -656,7 +777,20 @@ async function gauge(){
     datacurrentt[8]=parseFloat(jadi8[0]['currentt']);
     dataenergitotal[8]=parseFloat(jadi8[0]['energitotal']);
     datadayatotal[8]=parseFloat(jadi8[0]['dayatotal']);
-    */
+    } catch (error) {
+    dataenergir[8]=0;
+    dataenergis[8]=0;
+    dataenergit[8]=0;
+    datavoltr[8]=0;
+    datavolts[8]=0;
+    datavoltt[8]=0;
+    datacurrentr[8]=0;
+    datacurrents[8]=0;
+    datacurrentt[8]=0;
+    dataenergitotal[8]=0;
+    datadayatotal[8]=0;
+    }
+    
     var har= Date();
     var tim=har.split(" ");
     var wak=tim[4];
