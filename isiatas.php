@@ -112,7 +112,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a id=panel7 href="../7" class="nav-link ">
+                <a id=panel7 href="../panel7" class="nav-link ">
                   <i class="far fa-circle nav-icon"></i>
                   <p>panel 7</p>
                 </a>

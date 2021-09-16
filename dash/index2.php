@@ -13,7 +13,7 @@ document.title ="Dash";
 document.getElementById("tom1").disabled = true;
 document.getElementById("tom2").disabled = true;
 document.getElementById("panid").text="";
-document.getElementById("laporan").innerHTML = "Laporan Rata-rata Panel";
+document.getElementById("laporan").innerHTML = "Laporan Panel 1";
 var energiR = [],energis = [], volts = [], voltr = [], voltt = [], energit = [],dayatotal=[],energitotal=[],currentr=[],currents=[],currentt=[]; 
     var gaugeOptions = {
       chart: {

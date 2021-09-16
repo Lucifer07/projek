@@ -1,3 +1,4 @@
 untuk mengatur chart atur 3 bagian ( laporan(tampilan), index(build),fun fun2(getdata tau menentukan panel))
 untuk mengatur index hanya tinggal mengganti dom saja
 ubah bagian koneksi 
+aktifkan panel 3-9 pada index dengan cara mengpus komen
