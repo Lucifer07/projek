@@ -43,7 +43,7 @@ include 'testinput.php';
          } 
         //  $sqls = "UPDATE outputs SET state='" . $state . "' WHERE id='". $id .  "'";
         if ($currentR<200 or $currentS<200 or $currentT<200) {
-            $query="INSERT INTO panel1_(energis, energit, energir, voltr, volts, voltt, energitotal, currentr, currents, currentt, dayatotal) VALUES ($energiS, $energiT, $energiR, $voltR, $voltS, $voltT, $kwhtotal, $currentR, $currentS, $currentT, $dayatotal)";
+            $query="INSERT INTO panel_(idkey,energis, energit, energir, voltr, volts, voltt, energitotal, currentr, currents, currentt, dayatotal) VALUES ('panel1',$energiS, $energiT, $energiR, $voltR, $voltS, $voltT, $kwhtotal, $currentR, $currentS, $currentT, $dayatotal)";
             mysqli_query($conn, $query);
         }
         //  $sql = "UPDATE hasil SET energir='" . $energiR . "'". ",". "  WHERE panel='". $api_key . "'";     

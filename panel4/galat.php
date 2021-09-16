@@ -40,7 +40,7 @@
     <section class="sheet padding-10mm">
         <center>
         <img src="../dist/img/Jasamarga_Bali.webp" width="80" height="60">
-        <h1>LAPORAN MONITORING TEGANGAN GALAT PANEL1</BR></h1>
+        <h1>LAPORAN MONITORING TEGANGAN GALAT PANEL4</BR></h1>
         </center>
         <table class="table">
             <thead>
@@ -55,7 +55,7 @@
             <?php
             $h=date('m');
             include '../koneksi.php';
-            $cek_data = mysqli_query($koneksi,"SELECT * FROM panel_ where idkey='panel1'and month(tanggal)=$h");
+            $cek_data = mysqli_query($koneksi,"SELECT * FROM panel_ where idkey='panel4'and month(tanggal)=$h");
             foreach($cek_data as $row){
                 echo "<tr>
                     <td>".$row['tanggal']."</td>

@@ -9,11 +9,11 @@
     <?php include '../kebutuhan.php'?>
 </body>
 <Script> 
-document.title ="panel2";
-document.getElementById("panel").className = "nav-link active"; 
-document.getElementById("panel2").className = "nav-link active";
-document.getElementById("panid").text="panel2";
-document.getElementById("laporan").innerHTML = "Laporan Panel 2";
+document.title ="Dash";
+document.getElementById("tom1").disabled = true;
+document.getElementById("tom2").disabled = true;
+document.getElementById("panid").text="";
+document.getElementById("laporan").innerHTML = "Laporan Panel 1";
 var energiR = [],energis = [], volts = [], voltr = [], voltt = [], energit = [],dayatotal=[],energitotal=[],currentr=[],currents=[],currentt=[]; 
     var gaugeOptions = {
       chart: {
@@ -389,17 +389,17 @@ var energiR = [],energis = [], volts = [], voltr = [], voltt = [], energit = [],
         }
       }]
     };
-energiR["panel2"] = Highcharts.chart("container-kr", Highcharts.merge(gaugeOptions, configEnergiR));
-energis["panel2"] = Highcharts.chart("container-ks", Highcharts.merge(gaugeOptions, configEnergiS));
-energit["panel2"] = Highcharts.chart("container-kt", Highcharts.merge(gaugeOptions, configEnergiT));
-energitotal["panel2"] = Highcharts.chart("container-ktot", Highcharts.merge(gaugeOptions, configEnergiTotal));
-volts["panel2"] = Highcharts.chart("container-vs", Highcharts.merge(gaugeOptions, configVoltageS));
-voltr["panel2"] = Highcharts.chart("container-vr", Highcharts.merge(gaugeOptions, configvoltr));
-voltt["panel2"] = Highcharts.chart("container-vt", Highcharts.merge(gaugeOptions, configVoltageT));
-dayatotal["panel2"] = Highcharts.chart("container-ptot", Highcharts.merge(gaugeOptions, configDayaTotal));
-currentr["panel2"] = Highcharts.chart("container-cr", Highcharts.merge(gaugeOptions, configCurrentR));
-currents["panel2"] = Highcharts.chart("container-cs", Highcharts.merge(gaugeOptions, configCurrentS));
-currentt["panel2"] = Highcharts.chart("container-ct", Highcharts.merge(gaugeOptions, configCurrentT));
+energiR["Dash"] = Highcharts.chart("container-kr", Highcharts.merge(gaugeOptions, configEnergiR));
+energis["Dash"] = Highcharts.chart("container-ks", Highcharts.merge(gaugeOptions, configEnergiS));
+energit["Dash"] = Highcharts.chart("container-kt", Highcharts.merge(gaugeOptions, configEnergiT));
+energitotal["Dash"] = Highcharts.chart("container-ktot", Highcharts.merge(gaugeOptions, configEnergiTotal));
+volts["Dash"] = Highcharts.chart("container-vs", Highcharts.merge(gaugeOptions, configVoltageS));
+voltr["Dash"] = Highcharts.chart("container-vr", Highcharts.merge(gaugeOptions, configvoltr));
+voltt["Dash"] = Highcharts.chart("container-vt", Highcharts.merge(gaugeOptions, configVoltageT));
+dayatotal["Dash"] = Highcharts.chart("container-ptot", Highcharts.merge(gaugeOptions, configDayaTotal));
+currentr["Dash"] = Highcharts.chart("container-cr", Highcharts.merge(gaugeOptions, configCurrentR));
+currents["Dash"] = Highcharts.chart("container-cs", Highcharts.merge(gaugeOptions, configCurrentS));
+currentt["Dash"] = Highcharts.chart("container-ct", Highcharts.merge(gaugeOptions, configCurrentT));
 //fungsi line
 var elementnya = document.getElementById('pemakaian-chart');
 var datanya = {
@@ -479,7 +479,38 @@ var myLineChart = Chart.Line(elementnya,{
   options:option
 });
 //data
-const data= 'fun.php';
+const link= '../panel1/fun.php';
+const link1='../panel2/fun.php';
+const link2='../panel3/fun.php';
+const link3='../panel4/fun.php';
+const link4='../panel2/fun.php';
+const link5='../panel5/fun.php';
+const link6='../panel6/fun.php';
+const link7='../panel7/fun.php';
+const link8='../panel8/fun.php';
+const link9='../panel9/fun.php';
+let dataenergir=[0,0];
+let dataenergis=[0,0];
+let dataenergit=[0,0];
+let dataenergitotal=[0,0];
+let datavoltr=[0,0];
+let datavolts=[0,0];
+let datavoltt=[0,0];
+let datacurrentr=[0,0];
+let datacurrents=[0,0];
+let datacurrentt=[0,0];
+let datadayatotal=[0,0];
+var henergir=0;
+var henergis=0;
+var henergit=0;
+var hvoltr=0;
+var hvolts=0;
+var hvoltt=0;
+var hcurrentr=0;
+var hcurrents=0;
+var hcurrentt=0;
+var henergitotal=0;
+var hdayatotal=0;
 $(document).ready(function() {
     selesai();
 });
@@ -490,6 +521,7 @@ function selesai() {
 		selesai();
 	}, 200);
 }
+
 async function gauge(){
     if (myLineChart.data.labels.length==20) {
         myLineChart.data.labels=[];
@@ -497,27 +529,178 @@ async function gauge(){
         myLineChart.data.datasets[1].data=[];
         myLineChart.data.datasets[2].data=[];
     }
-    const datbar = await fetch(data);
+    //p1
+    const datbar = await fetch(link);
     const jadi = await datbar.json();
-    var tg=jadi[0]['tanggal'];
-    var a= tg.split(" ");
-    var b=a[1];
-    energiR["panel2"].series[0].points[0].update(parseFloat(jadi[0]['energir']));
-    energis["panel2"].series[0].points[0].update(parseFloat(jadi[0]['energis']));
-    energit["panel2"].series[0].points[0].update(parseFloat(jadi[0]['energit']));
-    energitotal["panel2"].series[0].points[0].update(parseFloat(jadi[0]['energitotal']));
-    dayatotal["panel2"].series[0].points[0].update(parseFloat(jadi[0]['dayatotal']));
-    voltr["panel2"].series[0].points[0].update(parseFloat(jadi[0]['voltr']));
-    volts["panel2"].series[0].points[0].update(parseFloat(jadi[0]['volts']));
-    voltt["panel2"].series[0].points[0].update(parseFloat(jadi[0]['voltt']));
-    currentr["panel2"].series[0].points[0].update(parseFloat(jadi[0]['currentr']));
-    currents["panel2"].series[0].points[0].update(parseFloat(jadi[0]['currents']));
-    currentt["panel2"].series[0].points[0].update(parseFloat(jadi[0]['currentt']));
-    myLineChart.data.labels.push(b);
-    myLineChart.data.datasets[0].data.push(jadi[0]['voltr']);
-    myLineChart.data.datasets[1].data.push(jadi[0]['volts']);
-    myLineChart.data.datasets[2].data.push(jadi[0]['voltt']);
-    myLineChart.update();
+    dataenergir[0]=parseFloat(jadi[0]['energir']);
+    dataenergis[0]=parseFloat(jadi[0]['energis']);
+    dataenergit[0]=parseFloat(jadi[0]['energit']);
+    datavoltr[0]=parseFloat(jadi[0]['voltr']);
+    datavolts[0]=parseFloat(jadi[0]['volts']);
+    datavoltt[0]=parseFloat(jadi[0]['voltt']);
+    datacurrentr[0]=parseFloat(jadi[0]['currentr']);
+    datacurrents[0]=parseFloat(jadi[0]['currents']);
+    datacurrentt[0]=parseFloat(jadi[0]['currentt']);
+    dataenergitotal[0]=parseFloat(jadi[0]['energitotal']);
+    datadayatotal[0]=parseFloat(jadi[0]['dayatotal']);
+    //p2
+    const datbar1 = await fetch(link1);
+    const jadi1 = await datbar1.json();
+    dataenergir[1]=parseFloat(jadi1[0]['energir']);
+    dataenergis[1]=parseFloat(jadi1[0]['energis']);
+    dataenergit[1]=parseFloat(jadi1[0]['energit']);
+    datavoltr[1]=parseFloat(jadi1[0]['voltr']);
+    datavolts[1]=parseFloat(jadi1[0]['volts']);
+    datavoltt[1]=parseFloat(jadi1[0]['voltt']);
+    datacurrentr[1]=parseFloat(jadi1[0]['currentr']);
+    datacurrents[1]=parseFloat(jadi1[0]['currents']);
+    datacurrentt[1]=parseFloat(jadi1[0]['currentt']);
+    dataenergitotal[1]=parseFloat(jadi1[0]['energitotal']);
+    datadayatotal[1]=parseFloat(jadi1[0]['dayatotal']);
+    /*
+    //p3
+    const datbar2 = await fetch(link2);
+    const jadi2 = await datbar2.json();
+    dataenergir[2]=parseFloat(jadi2[0]['energir']);
+    dataenergis[2]=parseFloat(jadi2[0]['energis']);
+    dataenergit[2]=parseFloat(jadi2[0]['energit']);
+    datavoltr[2]=parseFloat(jadi2[0]['voltr']);
+    datavolts[2]=parseFloat(jadi2[0]['volts']);
+    datavoltt[2]=parseFloat(jadi2[0]['voltt']);
+    datacurrentr[2]=parseFloat(jadi2[0]['currentr']);
+    datacurrents[2]=parseFloat(jadi2[0]['currents']);
+    datacurrentt[2]=parseFloat(jadi2[0]['currentt']);
+    dataenergitotal[2]=parseFloat(jadi2[0]['energitotal']);
+    datadayatotal[2]=parseFloat(jadi2[0]['dayatotal']);
+    //p4
+    const datbar3 = await fetch(link3);
+    const jadi3 = await datbar3.json();
+    dataenergir[3]=parseFloat(jadi3[0]['energir']);
+    dataenergis[3]=parseFloat(jadi3[0]['energis']);
+    dataenergit[3]=parseFloat(jadi3[0]['energit']);
+    datavoltr[3]=parseFloat(jadi3[0]['voltr']);
+    datavolts[3]=parseFloat(jadi3[0]['volts']);
+    datavoltt[3]=parseFloat(jadi3[0]['voltt']);
+    datacurrentr[3]=parseFloat(jadi3[0]['currentr']);
+    datacurrents[3]=parseFloat(jadi3[0]['currents']);
+    datacurrentt[3]=parseFloat(jadi3[0]['currentt']);
+    dataenergitotal[3]=parseFloat(jadi3[0]['energitotal']);
+    datadayatotal[3]=parseFloat(jadi3[0]['dayatotal']);
+    //p5
+    const datbar4 = await fetch(link4);
+    const jadi4 = await datbar4.json();
+    dataenergir[4]=parseFloat(jadi4[0]['energir']);
+    dataenergis[4]=parseFloat(jadi4[0]['energis']);
+    dataenergit[4]=parseFloat(jadi4[0]['energit']);
+    datavoltr[4]=parseFloat(jadi4[0]['voltr']);
+    datavolts[4]=parseFloat(jadi4[0]['volts']);
+    datavoltt[4]=parseFloat(jadi4[0]['voltt']);
+    datacurrentr[4]=parseFloat(jadi4[0]['currentr']);
+    datacurrents[4]=parseFloat(jadi4[0]['currents']);
+    datacurrentt[4]=parseFloat(jadi4[0]['currentt']);
+    dataenergitotal[4]=parseFloat(jadi4[0]['energitotal']);
+    datadayatotal[4]=parseFloat(jadi4[0]['dayatotal']);
+    //p6
+    const datbar5 = await fetch(link5);
+    const jadi5 = await datbar5.json();
+    dataenergir[5]=parseFloat(jadi5[0]['energir']);
+    dataenergis[5]=parseFloat(jadi5[0]['energis']);
+    dataenergit[5]=parseFloat(jadi5[0]['energit']);
+    datavoltr[5]=parseFloat(jadi5[0]['voltr']);
+    datavolts[5]=parseFloat(jadi5[0]['volts']);
+    datavoltt[5]=parseFloat(jadi5[0]['voltt']);
+    datacurrentr[5]=parseFloat(jadi5[0]['currentr']);
+    datacurrents[5]=parseFloat(jadi5[0]['currents']);
+    datacurrentt[5]=parseFloat(jadi5[0]['currentt']);
+    dataenergitotal[5]=parseFloat(jadi5[0]['energitotal']);
+    datadayatotal[5]=parseFloat(jadi5[0]['dayatotal']);
+    //p7
+    const datbar6 = await fetch(link6);
+    const jadi6 = await datbar6.json();
+    dataenergir[6]=parseFloat(jadi6[0]['energir']);
+    dataenergis[6]=parseFloat(jadi6[0]['energis']);
+    dataenergit[6]=parseFloat(jadi6[0]['energit']);
+    datavoltr[6]=parseFloat(jadi6[0]['voltr']);
+    datavolts[6]=parseFloat(jadi6[0]['volts']);
+    datavoltt[6]=parseFloat(jadi6[0]['voltt']);
+    datacurrentr[6]=parseFloat(jadi6[0]['currentr']);
+    datacurrents[6]=parseFloat(jadi6[0]['currents']);
+    datacurrentt[6]=parseFloat(jadi6[0]['currentt']);
+    dataenergitotal[6]=parseFloat(jadi6[0]['energitotal']);
+    datadayatotal[6]=parseFloat(jadi6[0]['dayatotal']);
+    //p8
+    const datbar7 = await fetch(link7);
+    const jadi7 = await datbar7.json();
+    dataenergir[7]=parseFloat(jadi7[0]['energir']);
+    dataenergis[7]=parseFloat(jadi7[0]['energis']);
+    dataenergit[7]=parseFloat(jadi7[0]['energit']);
+    datavoltr[7]=parseFloat(jadi7[0]['voltr']);
+    datavolts[7]=parseFloat(jadi7[0]['volts']);
+    datavoltt[7]=parseFloat(jadi7[0]['voltt']);
+    datacurrentr[7]=parseFloat(jadi7[0]['currentr']);
+    datacurrents[7]=parseFloat(jadi7[0]['currents']);
+    datacurrentt[7]=parseFloat(jadi7[0]['currentt']);
+    dataenergitotal[7]=parseFloat(jadi7[0]['energitotal']);
+    datadayatotal[7]=parseFloat(jadi7[0]['dayatotal']);
+    //p9
+    const datbar8 = await fetch(link8);
+    const jadi8 = await datbar8.json();
+    dataenergir[8]=parseFloat(jadi8[0]['energir']);
+    dataenergis[8]=parseFloat(jadi8[0]['energis']);
+    dataenergit[8]=parseFloat(jadi8[0]['energit']);
+    datavoltr[8]=parseFloat(jadi8[0]['voltr']);
+    datavolts[8]=parseFloat(jadi8[0]['volts']);
+    datavoltt[8]=parseFloat(jadi8[0]['voltt']);
+    datacurrentr[8]=parseFloat(jadi8[0]['currentr']);
+    datacurrents[8]=parseFloat(jadi8[0]['currents']);
+    datacurrentt[8]=parseFloat(jadi8[0]['currentt']);
+    dataenergitotal[8]=parseFloat(jadi8[0]['energitotal']);
+    datadayatotal[8]=parseFloat(jadi8[0]['dayatotal']);
+    */
+    var har= Date();
+    var tim=har.split(" ");
+    var wak=tim[4];
+    //hitunh data
+    for (let i = 0; i < dataenergir.length; i++) {
+        henergir += dataenergir[i];
+        henergis += dataenergis[i];
+        henergit += dataenergit[i];
+        hvoltr += datavoltr[i];
+        hvolts += datavolts[i];
+        hvoltt += datavoltt[i];
+        hcurrentr += datacurrentr[i];
+        hcurrents += datacurrents[i];
+        hcurrentt += datacurrentt[i];
+        henergitotal += dataenergitotal[i];
+        hdayatotal += datadayatotal[i];
+    };
+    energiR["Dash"].series[0].points[0].update(henergir/9);
+    energis["Dash"].series[0].points[0].update(henergis/9);
+    energit["Dash"].series[0].points[0].update(henergit/9);
+    energitotal["Dash"].series[0].points[0].update(henergitotal/9);
+    dayatotal["Dash"].series[0].points[0].update(hdayatotal/9);
+    voltr["Dash"].series[0].points[0].update(hvoltr/9);
+    volts["Dash"].series[0].points[0].update(hvolts/9);
+    voltt["Dash"].series[0].points[0].update(hvoltt/9);
+    currentr["Dash"].series[0].points[0].update(hcurrentr/9);
+    currents["Dash"].series[0].points[0].update(hcurrents/9);
+    currentt["Dash"].series[0].points[0].update(hcurrents/9);
+    myLineChart.data.labels.push(wak);
+    myLineChart.data.datasets[0].data.push(hvoltr/9);
+    myLineChart.data.datasets[1].data.push(hvolts/9);
+    myLineChart.data.datasets[2].data.push(hvoltt/9);
+    myLineChart.update()
+    henergir =0;
+    henergis =0;
+    henergit =0;
+    hvoltr =0;
+    hvolts =0;
+    hvoltt =0;
+    hcurrentr =0;
+    hcurrents =0;
+    hcurrentt =0;
+    henergitotal =0;
+    hdayatotal =0;
 }
 </Script>
 </html>

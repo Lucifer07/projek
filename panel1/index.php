@@ -9,6 +9,7 @@
     <?php include '../kebutuhan.php'?>
 </body>
 <Script> 
+document.title ="Panel1";
 document.getElementById("panel").className = "nav-link active"; 
 document.getElementById("panel1").className = "nav-link active";
 document.getElementById("panid").text="panel1";
@@ -486,7 +487,6 @@ $(document).ready(function() {
 function selesai() {
 	setTimeout(function() {
 		gauge();
-    //line();
 		selesai();
 	}, 200);
 }
@@ -495,6 +495,7 @@ async function gauge(){
         myLineChart.data.labels=[];
         myLineChart.data.datasets[0].data=[];
         myLineChart.data.datasets[1].data=[];
+        myLineChart.data.datasets[2].data=[];
     }
     const datbar = await fetch(data);
     const jadi = await datbar.json();
