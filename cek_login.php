@@ -22,7 +22,7 @@ if ($user_valid) {
         session_start();
         $_SESSION['username'] = $user_valid['username'];
         $_SESSION['password'] = $user_valid['password'];
-        header('location:home_admin.php');
+        header('location:/dash');
         //uji level user
     } else {
         echo "<script>alert('Maaf, Login Gagal, Password anda tidak sesuai!');document.location='index.php'</script>";

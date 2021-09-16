@@ -8,13 +8,13 @@ $tgl2="$b[0]-$b[1]-$b[2]";
 $h=date('d');
 $z=date('m');
 $bln=(int)$z;
-$sql =mysqli_query($koneksi, "SELECT max(energitotal) FROM panel1 WHERE day(tanggal)='$h' and month(tanggal)='$bln' ");
+$sql =mysqli_query($koneksi, "SELECT max(energitotal) FROM panel9 WHERE day(tanggal)='$h' and month(tanggal)='$bln' ");
 $dapat=mysqli_fetch_array($sql);
 $data=$dapat['max(energitotal)'];
-$sql2 =mysqli_query($koneksi, "SELECT energitotal FROM panel1 WHERE day(tanggal)='$h' and month(tanggal)='$bln' ");
+$sql2 =mysqli_query($koneksi, "SELECT energitotal FROM panel9 WHERE day(tanggal)='$h' and month(tanggal)='$bln' ");
 $jumlah = mysqli_num_rows($sql2);
 if ($jumlah>1) {
-    $query="DELETE from panel1 where energitotal<'$data' and day(tanggal)=$h and month(tanggal)=$bln ";
+    $query="DELETE from panel9 where energitotal<'$data' and day(tanggal)=$h and month(tanggal)=$bln ";
     mysqli_query($koneksi, $query);
 }
 ?>
@@ -59,7 +59,7 @@ if ($jumlah>1) {
     <section class="sheet padding-10mm">
         <center>
         <img src="../dist/img/Jasamarga_Bali.webp" width="80" height="60">
-        <h1>LAPORAN MONITORING PANEL1</BR><?= $tgl1?> HINGGA <?= $a?></h1>
+        <h1>LAPORAN MONITORING panel9</BR><?= $tgl1?> HINGGA <?= $a?></h1>
         </center>
         <table class="table">
             <thead>
@@ -74,7 +74,7 @@ if ($jumlah>1) {
             </thead>
             <tbody>
             <?php
-            $cek_data = mysqli_query($koneksi, "SELECT * FROM panel1 WHERE tanggal between '$tgl1' and '$tgl2' ORDER BY tanggal");
+            $cek_data = mysqli_query($koneksi, "SELECT * FROM panel9 WHERE tanggal between '$tgl1' and '$tgl2' ORDER BY tanggal");
             $energis=[];
             $energit=[];
             $energir=[];

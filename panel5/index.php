@@ -9,11 +9,11 @@
     <?php include '../kebutuhan.php'?>
 </body>
 <Script> 
-document.title ="panel2";
+document.title ="panel5";
 document.getElementById("panel").className = "nav-link active"; 
-document.getElementById("panel2").className = "nav-link active";
-document.getElementById("panid").text="panel2";
-document.getElementById("laporan").innerHTML = "Laporan Panel 2";
+document.getElementById("panel5").className = "nav-link active";
+document.getElementById("panid").text="panel5";
+document.getElementById("laporan").innerHTML = "Laporan Panel 5";
 var energiR = [],energis = [], volts = [], voltr = [], voltt = [], energit = [],dayatotal=[],energitotal=[],currentr=[],currents=[],currentt=[]; 
     var gaugeOptions = {
       chart: {
@@ -389,17 +389,17 @@ var energiR = [],energis = [], volts = [], voltr = [], voltt = [], energit = [],
         }
       }]
     };
-energiR["panel2"] = Highcharts.chart("container-kr", Highcharts.merge(gaugeOptions, configEnergiR));
-energis["panel2"] = Highcharts.chart("container-ks", Highcharts.merge(gaugeOptions, configEnergiS));
-energit["panel2"] = Highcharts.chart("container-kt", Highcharts.merge(gaugeOptions, configEnergiT));
-energitotal["panel2"] = Highcharts.chart("container-ktot", Highcharts.merge(gaugeOptions, configEnergiTotal));
-volts["panel2"] = Highcharts.chart("container-vs", Highcharts.merge(gaugeOptions, configVoltageS));
-voltr["panel2"] = Highcharts.chart("container-vr", Highcharts.merge(gaugeOptions, configvoltr));
-voltt["panel2"] = Highcharts.chart("container-vt", Highcharts.merge(gaugeOptions, configVoltageT));
-dayatotal["panel2"] = Highcharts.chart("container-ptot", Highcharts.merge(gaugeOptions, configDayaTotal));
-currentr["panel2"] = Highcharts.chart("container-cr", Highcharts.merge(gaugeOptions, configCurrentR));
-currents["panel2"] = Highcharts.chart("container-cs", Highcharts.merge(gaugeOptions, configCurrentS));
-currentt["panel2"] = Highcharts.chart("container-ct", Highcharts.merge(gaugeOptions, configCurrentT));
+energiR["panel5"] = Highcharts.chart("container-kr", Highcharts.merge(gaugeOptions, configEnergiR));
+energis["panel5"] = Highcharts.chart("container-ks", Highcharts.merge(gaugeOptions, configEnergiS));
+energit["panel5"] = Highcharts.chart("container-kt", Highcharts.merge(gaugeOptions, configEnergiT));
+energitotal["panel5"] = Highcharts.chart("container-ktot", Highcharts.merge(gaugeOptions, configEnergiTotal));
+volts["panel5"] = Highcharts.chart("container-vs", Highcharts.merge(gaugeOptions, configVoltageS));
+voltr["panel5"] = Highcharts.chart("container-vr", Highcharts.merge(gaugeOptions, configvoltr));
+voltt["panel5"] = Highcharts.chart("container-vt", Highcharts.merge(gaugeOptions, configVoltageT));
+dayatotal["panel5"] = Highcharts.chart("container-ptot", Highcharts.merge(gaugeOptions, configDayaTotal));
+currentr["panel5"] = Highcharts.chart("container-cr", Highcharts.merge(gaugeOptions, configCurrentR));
+currents["panel5"] = Highcharts.chart("container-cs", Highcharts.merge(gaugeOptions, configCurrentS));
+currentt["panel5"] = Highcharts.chart("container-ct", Highcharts.merge(gaugeOptions, configCurrentT));
 //fungsi line
 var elementnya = document.getElementById('pemakaian-chart');
 var datanya = {
@@ -502,17 +502,17 @@ async function gauge(){
     var tg=jadi[0]['tanggal'];
     var a= tg.split(" ");
     var b=a[1];
-    energiR["panel2"].series[0].points[0].update(parseFloat(jadi[0]['energir']));
-    energis["panel2"].series[0].points[0].update(parseFloat(jadi[0]['energis']));
-    energit["panel2"].series[0].points[0].update(parseFloat(jadi[0]['energit']));
-    energitotal["panel2"].series[0].points[0].update(parseFloat(jadi[0]['energitotal']));
-    dayatotal["panel2"].series[0].points[0].update(parseFloat(jadi[0]['dayatotal']));
-    voltr["panel2"].series[0].points[0].update(parseFloat(jadi[0]['voltr']));
-    volts["panel2"].series[0].points[0].update(parseFloat(jadi[0]['volts']));
-    voltt["panel2"].series[0].points[0].update(parseFloat(jadi[0]['voltt']));
-    currentr["panel2"].series[0].points[0].update(parseFloat(jadi[0]['currentr']));
-    currents["panel2"].series[0].points[0].update(parseFloat(jadi[0]['currents']));
-    currentt["panel2"].series[0].points[0].update(parseFloat(jadi[0]['currentt']));
+    energiR["panel5"].series[0].points[0].update(parseFloat(jadi[0]['energir']));
+    energis["panel5"].series[0].points[0].update(parseFloat(jadi[0]['energis']));
+    energit["panel5"].series[0].points[0].update(parseFloat(jadi[0]['energit']));
+    energitotal["panel5"].series[0].points[0].update(parseFloat(jadi[0]['energitotal']));
+    dayatotal["panel5"].series[0].points[0].update(parseFloat(jadi[0]['dayatotal']));
+    voltr["panel5"].series[0].points[0].update(parseFloat(jadi[0]['voltr']));
+    volts["panel5"].series[0].points[0].update(parseFloat(jadi[0]['volts']));
+    voltt["panel5"].series[0].points[0].update(parseFloat(jadi[0]['voltt']));
+    currentr["panel5"].series[0].points[0].update(parseFloat(jadi[0]['currentr']));
+    currents["panel5"].series[0].points[0].update(parseFloat(jadi[0]['currents']));
+    currentt["panel5"].series[0].points[0].update(parseFloat(jadi[0]['currentt']));
     myLineChart.data.labels.push(b);
     myLineChart.data.datasets[0].data.push(jadi[0]['voltr']);
     myLineChart.data.datasets[1].data.push(jadi[0]['volts']);

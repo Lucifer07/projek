@@ -70,16 +70,16 @@
                       <form action="print.php" method="post">
                       <p>
                       <center>
-                          <input type="date" name="tanggal" >
+                          <input type="date" name="tanggal" required>
                           to
-                          <input type="date" name="tanggal2" >
+                          <input type="date" name="tanggal2" required>
                       </center>
 	                   </p>
-                     <button type="submit" value="kirim" class="btn btn-block btn-success btn-sm">Cetak Data</button>
+                     <button id=tom1 type="submit" value="kirim" class="btn btn-block btn-success btn-sm">Cetak Data</button>
                       </form>
                       <p></p>
                       <form action="galat.php" method="post">
-                      <button type="submit" value="kirim" class="btn btn-block btn-danger btn-sm">Cetak Data Voltage Tidak Stabil</button>
+                      <button id=tom2 type="submit" value="kirim" class="btn btn-block btn-danger btn-sm">Cetak Data Voltage Tidak Stabil</button>
                       </form>
                     </div>
                   </div>

@@ -9,11 +9,11 @@
     <?php include '../kebutuhan.php'?>
 </body>
 <Script> 
-document.title ="panel2";
-document.getElementById("panel").className = "nav-link active"; 
-document.getElementById("panel2").className = "nav-link active";
-document.getElementById("panid").text="panel2";
-document.getElementById("laporan").innerHTML = "Laporan Panel 2";
+document.title ="Dashboard";
+document.getElementById("tom1").disabled = true;
+document.getElementById("tom2").disabled = true;
+document.getElementById("panid").text="";
+document.getElementById("laporan").innerHTML = "Laporan Rata-Rata Panel";
 var energiR = [],energis = [], volts = [], voltr = [], voltt = [], energit = [],dayatotal=[],energitotal=[],currentr=[],currents=[],currentt=[]; 
     var gaugeOptions = {
       chart: {
@@ -389,24 +389,24 @@ var energiR = [],energis = [], volts = [], voltr = [], voltt = [], energit = [],
         }
       }]
     };
-energiR["panel2"] = Highcharts.chart("container-kr", Highcharts.merge(gaugeOptions, configEnergiR));
-energis["panel2"] = Highcharts.chart("container-ks", Highcharts.merge(gaugeOptions, configEnergiS));
-energit["panel2"] = Highcharts.chart("container-kt", Highcharts.merge(gaugeOptions, configEnergiT));
-energitotal["panel2"] = Highcharts.chart("container-ktot", Highcharts.merge(gaugeOptions, configEnergiTotal));
-volts["panel2"] = Highcharts.chart("container-vs", Highcharts.merge(gaugeOptions, configVoltageS));
-voltr["panel2"] = Highcharts.chart("container-vr", Highcharts.merge(gaugeOptions, configvoltr));
-voltt["panel2"] = Highcharts.chart("container-vt", Highcharts.merge(gaugeOptions, configVoltageT));
-dayatotal["panel2"] = Highcharts.chart("container-ptot", Highcharts.merge(gaugeOptions, configDayaTotal));
-currentr["panel2"] = Highcharts.chart("container-cr", Highcharts.merge(gaugeOptions, configCurrentR));
-currents["panel2"] = Highcharts.chart("container-cs", Highcharts.merge(gaugeOptions, configCurrentS));
-currentt["panel2"] = Highcharts.chart("container-ct", Highcharts.merge(gaugeOptions, configCurrentT));
+energiR["dashboard"] = Highcharts.chart("container-kr", Highcharts.merge(gaugeOptions, configEnergiR));
+energis["dashboard"] = Highcharts.chart("container-ks", Highcharts.merge(gaugeOptions, configEnergiS));
+energit["dashboard"] = Highcharts.chart("container-kt", Highcharts.merge(gaugeOptions, configEnergiT));
+energitotal["dashboard"] = Highcharts.chart("container-ktot", Highcharts.merge(gaugeOptions, configEnergiTotal));
+volts["dashboard"] = Highcharts.chart("container-vs", Highcharts.merge(gaugeOptions, configVoltageS));
+voltr["dashboard"] = Highcharts.chart("container-vr", Highcharts.merge(gaugeOptions, configvoltr));
+voltt["dashboard"] = Highcharts.chart("container-vt", Highcharts.merge(gaugeOptions, configVoltageT));
+dayatotal["dashboard"] = Highcharts.chart("container-ptot", Highcharts.merge(gaugeOptions, configDayaTotal));
+currentr["dashboard"] = Highcharts.chart("container-cr", Highcharts.merge(gaugeOptions, configCurrentR));
+currents["dashboard"] = Highcharts.chart("container-cs", Highcharts.merge(gaugeOptions, configCurrentS));
+currentt["dashboard"] = Highcharts.chart("container-ct", Highcharts.merge(gaugeOptions, configCurrentT));
 //fungsi line
 var elementnya = document.getElementById('pemakaian-chart');
 var datanya = {
     labels: [],
     datasets: [
         {
-            label: "Vr",
+            label: "V r",
             fill: false,
             lineTension: 0.1,
             backgroundColor: "rgba(255,0,0,0.4)",
@@ -427,7 +427,7 @@ var datanya = {
             data: [],
         },
         {
-            label: "vs",
+            label: "V s",
             fill: false,
             lineTension: 0.1,
             backgroundColor: "rgba(255,255,0, o.4)",
@@ -448,7 +448,7 @@ var datanya = {
             data: [],
         },
         {
-            label: "vt",
+            label: "V t",
             fill: false,
             lineTension: 0.1,
             backgroundColor: "rgba(0,255,0, o.4)",
@@ -467,7 +467,134 @@ var datanya = {
             pointRadius: 5,
             pointHitRadius: 10,
             data: [],
+        }/*,
+        {
+            label: "V Panel4",
+            fill: false,
+            lineTension: 0.1,
+            backgroundColor: "rgba(255,128,0, o.4)",
+            borderColor: "rgba(255,128,0, 1)",
+            borderCapStyle: 'butt',
+            borderDash: [],
+            borderDashOffset: 0.0,
+            borderJoinStyle: 'miter',
+            pointBorderColor: "rgba(255,128,0, 1)",
+            pointBackgroundColor: "#fff",
+            pointBorderWidth: 1,
+            pointHoverRadius: 5,
+            pointHoverBackgroundColor: "rgba(255,128,0, 1)",
+            pointHoverBorderColor: "rgba(255,128,0, 1)",
+            pointHoverBorderWidth: 2,
+            pointRadius: 5,
+            pointHitRadius: 10,
+            data: [],
+        },
+        {
+            label: "V Panel5",
+            fill: false,
+            lineTension: 0.1,
+            backgroundColor: "rgba(102,255,255, o.4)",
+            borderColor: "rgba(102,255,255, 1)",
+            borderCapStyle: 'butt',
+            borderDash: [],
+            borderDashOffset: 0.0,
+            borderJoinStyle: 'miter',
+            pointBorderColor: "rgba(102,255,255, 1)",
+            pointBackgroundColor: "#fff",
+            pointBorderWidth: 1,
+            pointHoverRadius: 5,
+            pointHoverBackgroundColor: "rgba(102,255,255, 1)",
+            pointHoverBorderColor: "rgba(102,255,255, 1)",
+            pointHoverBorderWidth: 2,
+            pointRadius: 5,
+            pointHitRadius: 10,
+            data: [],
+        },
+        {
+            label: "V Panel6",
+            fill: false,
+            lineTension: 0.1,
+            backgroundColor: "rgba(0,51,102, o.4)",
+            borderColor: "rgba(0,51,102, 1)",
+            borderCapStyle: 'butt',
+            borderDash: [],
+            borderDashOffset: 0.0,
+            borderJoinStyle: 'miter',
+            pointBorderColor: "rgba(0,51,102, 1)",
+            pointBackgroundColor: "#fff",
+            pointBorderWidth: 1,
+            pointHoverRadius: 5,
+            pointHoverBackgroundColor: "rgba(0,51,102, 1)",
+            pointHoverBorderColor: "rgba(0,51,102, 1)",
+            pointHoverBorderWidth: 2,
+            pointRadius: 5,
+            pointHitRadius: 10,
+            data: [],
+        },
+        {
+            label: "V Panel7",
+            fill: false,
+            lineTension: 0.1,
+            backgroundColor: "rgba(178,102,255, o.4)",
+            borderColor: "rgba(178,102,255, 1)",
+            borderCapStyle: 'butt',
+            borderDash: [],
+            borderDashOffset: 0.0,
+            borderJoinStyle: 'miter',
+            pointBorderColor: "rgba(178,102,255, 1)",
+            pointBackgroundColor: "#fff",
+            pointBorderWidth: 1,
+            pointHoverRadius: 5,
+            pointHoverBackgroundColor: "rgba(178,102,255, 1)",
+            pointHoverBorderColor: "rgba(178,102,255, 1)",
+            pointHoverBorderWidth: 2,
+            pointRadius: 5,
+            pointHitRadius: 10,
+            data: [],
+        },
+        {
+            label: "V Panel8",
+            fill: false,
+            lineTension: 0.1,
+            backgroundColor: "rgba(255,51,255, o.4)",
+            borderColor: "rgba(255,51,255, 1)",
+            borderCapStyle: 'butt',
+            borderDash: [],
+            borderDashOffset: 0.0,
+            borderJoinStyle: 'miter',
+            pointBorderColor: "rgba(255,51,255, 1)",
+            pointBackgroundColor: "#fff",
+            pointBorderWidth: 1,
+            pointHoverRadius: 5,
+            pointHoverBackgroundColor: "rgba(255,51,255, 1)",
+            pointHoverBorderColor: "rgba(255,51,255, 1)",
+            pointHoverBorderWidth: 2,
+            pointRadius: 5,
+            pointHitRadius: 10,
+            data: [],
+        },
+        {
+            label: "V Panel9",
+            fill: false,
+            lineTension: 0.1,
+            backgroundColor: "rgba(32,32,32, o.4)",
+            borderColor: "rgba(32,32,32, 1)",
+            borderCapStyle: 'butt',
+            borderDash: [],
+            borderDashOffset: 0.0,
+            borderJoinStyle: 'miter',
+            pointBorderColor: "rgba(32,32,32, 1)",
+            pointBackgroundColor: "#fff",
+            pointBorderWidth: 1,
+            pointHoverRadius: 5,
+            pointHoverBackgroundColor: "rgba(32,32,32, 1)",
+            pointHoverBorderColor: "rgba(32,32,32, 1)",
+            pointHoverBorderWidth: 2,
+            pointRadius: 5,
+            pointHitRadius: 10,
+            data: [],
         }
+        */
     ]
 };
 //fungsi gambar
@@ -479,7 +606,10 @@ var myLineChart = Chart.Line(elementnya,{
   options:option
 });
 //data
-const data= 'fun.php';
+<?php for ($i=1; $i <10 ; $i++) { 
+  echo "const data$i= '../panel$i/fun.php';";
+}?>
+
 $(document).ready(function() {
     selesai();
 });
@@ -496,27 +626,102 @@ async function gauge(){
         myLineChart.data.datasets[0].data=[];
         myLineChart.data.datasets[1].data=[];
         myLineChart.data.datasets[2].data=[];
+        myLineChart.data.datasets[3].data=[];
+        myLineChart.data.datasets[4].data=[];
+        myLineChart.data.datasets[5].data=[];
+        myLineChart.data.datasets[6].data=[];
+        myLineChart.data.datasets[7].data=[];
+        myLineChart.data.datasets[8].data=[];
     }
-    const datbar = await fetch(data);
-    const jadi = await datbar.json();
-    var tg=jadi[0]['tanggal'];
-    var a= tg.split(" ");
-    var b=a[1];
-    energiR["panel2"].series[0].points[0].update(parseFloat(jadi[0]['energir']));
-    energis["panel2"].series[0].points[0].update(parseFloat(jadi[0]['energis']));
-    energit["panel2"].series[0].points[0].update(parseFloat(jadi[0]['energit']));
-    energitotal["panel2"].series[0].points[0].update(parseFloat(jadi[0]['energitotal']));
-    dayatotal["panel2"].series[0].points[0].update(parseFloat(jadi[0]['dayatotal']));
-    voltr["panel2"].series[0].points[0].update(parseFloat(jadi[0]['voltr']));
-    volts["panel2"].series[0].points[0].update(parseFloat(jadi[0]['volts']));
-    voltt["panel2"].series[0].points[0].update(parseFloat(jadi[0]['voltt']));
-    currentr["panel2"].series[0].points[0].update(parseFloat(jadi[0]['currentr']));
-    currents["panel2"].series[0].points[0].update(parseFloat(jadi[0]['currents']));
-    currentt["panel2"].series[0].points[0].update(parseFloat(jadi[0]['currentt']));
-    myLineChart.data.labels.push(b);
-    myLineChart.data.datasets[0].data.push(jadi[0]['voltr']);
-    myLineChart.data.datasets[1].data.push(jadi[0]['volts']);
-    myLineChart.data.datasets[2].data.push(jadi[0]['voltt']);
+    let Genergir=[];
+    let Genergis=[];
+    let Genergit=[];
+    let Genergitotal=[];
+    let Gdayatotal=[];
+    let Gvoltr=[];
+    let Gvolts=[];
+    let Gvoltt=[];
+    let Gcurrentr=[];
+    let Gcurrents=[];
+    let Gcurrentt=[];
+    var Genergirt=0;
+    var Genergist=0;
+    var Genergitt=0;
+    var Genergitotalt=0;
+    var Gdayatotalt=0;
+    var Gvoltrt=0;
+    var Gvoltst=0;
+    var Gvolttt=0;
+    var Gcurrentrt=0;
+    var Gcurrentst=0;
+    var Gcurrenttt=0;
+    <?php
+    for ($z=1; $z <10 ; $z++) { 
+    echo "const datbar$z = await fetch(data$z);";
+    echo "const jadi$z = await datbar$z.json();";
+    echo "Genergir.push(parseFloat(jadi$z[0]['energir']));";
+    echo "Genergis.push(parseFloat(jadi$z[0]['energis']));";
+    echo "Genergit.push(parseFloat(jadi$z[0]['energit']));";
+    echo "Genergitotal.push(parseFloat(jadi$z[0]['energitotal']));";
+    echo "Gdayatotal.push(parseFloat(jadi$z[0]['dayatotal']));";
+    echo "Gvoltr.push(parseFloat(jadi$z[0]['voltr']));";
+    echo "Gvolts.push(parseFloat(jadi$z[0]['volts']));";
+    echo "Gvoltt.push(parseFloat(jadi$z[0]['voltt']));";
+    echo "Gcurrentr.push(parseFloat(jadi$z[0]['currentr']));";
+    echo "Gcurrents.push(parseFloat(jadi$z[0]['currents']));";
+    echo "Gcurrentt.push(parseFloat(jadi$z[0]['currentt']));";
+    }
+    ?>
+    for (let index = 0; index < Genergir.length; index++) {
+      Genergirt += Genergir[index];
+    }
+    for (let index = 0; index < Genergis.length; index++) {
+      Genergist += Genergis[index];
+    }
+    for (let index = 0; index < Genergit.length; index++) {
+      Genergitt += Genergit[index];
+    }
+    for (let index = 0; index < Genergitotal.length; index++) {
+      Genergitotalt += Genergitotal[index];
+    }
+    for (let index = 0; index < Gdayatotal.length; index++) {
+      Gdayatotalt += Gdayatotal[index];
+    }
+    for (let index = 0; index < Gvoltr.length; index++) {
+      Gvoltrt += Gvoltr[index];
+    }
+    for (let index = 0; index < Gvolts.length; index++) {
+      Gvoltst += Gvolts[index];
+    }
+    for (let index = 0; index < Gvoltt.length; index++) {
+      Gvolttt += Gvoltt[index];
+    }
+    for (let index = 0; index < Gcurrentr.length; index++) {
+      Gcurrentrt += Gcurrentr[index];
+    }
+    for (let index = 0; index < Gcurrents.length; index++) {
+      Gcurrentst += Gcurrents[index];
+    }
+    for (let index = 0; index < Gcurrentt.length; index++) {
+      Gcurrenttt += Gcurrentt[index];
+    }
+    //gauge
+    energiR["dashboard"].series[0].points[0].update(parseFloat(Genergirt/9);
+    energis["dashboard"].series[0].points[0].update(parseFloat(Genergist/9);
+    energit["dashboard"].series[0].points[0].update(parseFloat(Genergitt/9);
+    energitotal["dashboard"].series[0].points[0].update(parseFloat(Genergitotalt/9);
+    dayatotal["dashboard"].series[0].points[0].update(parseFloat(Gdayatotalt/9);
+    voltr["dashboard"].series[0].points[0].update(parseFloat(Gvoltrt/9);
+    volts["dashboard"].series[0].points[0].update(parseFloat(Gvoltst/9);
+    voltt["dashboard"].series[0].points[0].update(parseFloat(Gvolttt/9);
+    currentr["dashboard"].series[0].points[0].update(parseFloat(Gcurrentrt/9);
+    currents["dashboard"].series[0].points[0].update(parseFloat(Gcurrentst/9);
+    currentt["dashboard"].series[0].points[0].update(parseFloat(Gcurrenttt/9);
+    //line
+    myLineChart.data.labels.push(<?=date('H:i:s')?>);
+    myLineChart.data.datasets[0].data.push(Gvoltrt);
+    myLineChart.data.datasets[1].data.push(Gvoltst);
+    myLineChart.data.datasets[2].data.push(Gvolttt);
     myLineChart.update();
 }
 </Script>
